@@ -1,14 +1,15 @@
-# Directorio Inteligente de Domicilios — V1.3
+# Directorio Inteligente de Domicilios — V1.4
 
-Incluye:
-- Foto de fachada usando cámara o galería.
-- Guardado de foto local en IndexedDB.
-- Ubicación GPS actual con precisión aproximada.
-- Enlace directo a Google Maps usando las coordenadas guardadas.
+Novedades:
+- Deslizar de izquierda a derecha sobre un domicilio → Editar.
+- Deslizar de derecha a izquierda → Eliminar.
+- Confirmación antes de eliminar.
+- Edición conserva foto, ubicación, personas, teléfonos, direcciones asociadas y notas.
+- V1.3: foto de fachada, GPS y enlace a Google Maps.
 - Casas y departamentos.
-- Direcciones asociadas.
-- Personas y teléfonos.
 - Búsqueda.
-- Migración de los datos de V1.2.
+- IndexedDB para datos y fotos.
 
-Nota: el enlace abre la ubicación guardada en Google Maps. Para añadirla a "Guardados" de Google Maps, el usuario puede pulsar Guardar dentro de Google Maps.
+Gestos:
+← izquierda = eliminar
+derecha → = editar

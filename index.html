@@ -14,10 +14,10 @@ button,input,textarea{font:inherit}button{cursor:pointer}
 .container{max-width:760px;margin:auto;padding:8px 20px 110px}.search{display:flex;align-items:center;gap:10px;padding:15px 16px;border:1px solid var(--border);border-radius:20px;background:var(--panel);backdrop-filter:blur(20px)}.search span{font-size:22px;color:var(--muted)}.search input{width:100%;border:0;outline:0;background:none;color:white;font-size:16px}.search input::placeholder{color:var(--muted)}
 .stats{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0 28px}.stat{padding:16px;border-radius:21px;border:1px solid rgba(98,245,165,.18);background:linear-gradient(145deg,rgba(98,245,165,.09),var(--panel));display:grid;grid-template-columns:auto 1fr;gap:8px}.stat.red{border-color:rgba(255,89,100,.20);background:linear-gradient(145deg,rgba(255,89,100,.09),var(--panel))}.stat .ico{grid-row:span 2;font-size:28px}.stat b{font-size:20px}.stat small{color:var(--muted)}
 .section-head{display:flex;justify-content:space-between;align-items:end;margin-bottom:12px}.section-head h2{font-size:22px;margin:4px 0 0}.count{color:var(--muted);font-size:13px}.list{display:grid;gap:12px}
-.card{position:relative;overflow:hidden;padding:14px;border:1px solid rgba(98,245,165,.17);border-radius:22px;background:var(--panel);backdrop-filter:blur(18px);display:grid;grid-template-columns:86px 1fr;gap:14px}.card.red{border-color:rgba(255,89,100,.22)}.photo{width:86px;height:86px;border-radius:17px;overflow:hidden;background:rgba(255,255,255,.05);display:flex;align-items:center;justify-content:center}.photo img{width:100%;height:100%;object-fit:cover}.photo .no-photo{font-size:32px}.type{font-size:10px;font-weight:900;letter-spacing:2px;margin-bottom:7px}.card:not(.red) .type{color:var(--green)}.card.red .type{color:var(--red)}.address{font-size:18px;font-weight:850;line-height:1.3}.people{color:var(--muted);margin-top:7px;font-size:14px}.meta{color:var(--muted);margin-top:10px;font-size:12px}.map-badge{display:inline-block;margin-top:7px;color:var(--cyan);font-size:12px;font-weight:800}
+.swipe-wrap{position:relative;border-radius:22px;overflow:hidden;touch-action:pan-y}.swipe-wrap .card{position:relative;z-index:2;transition:transform .18s ease}.swipe-action{position:absolute;inset:0;display:flex;align-items:center;gap:7px;padding:0 24px;font-weight:900;font-size:14px;opacity:.92}.swipe-action span{font-size:11px;letter-spacing:1px;text-transform:uppercase}.edit-action{justify-content:flex-start;background:linear-gradient(90deg,rgba(98,245,165,.25),rgba(98,245,165,.08));color:var(--green)}.delete-action{justify-content:flex-end;background:linear-gradient(90deg,rgba(255,89,100,.08),rgba(255,89,100,.28));color:var(--red)}.card{position:relative;overflow:hidden;padding:14px;border:1px solid rgba(98,245,165,.17);border-radius:22px;background:var(--panel);backdrop-filter:blur(18px);display:grid;grid-template-columns:86px 1fr;gap:14px}.card.red{border-color:rgba(255,89,100,.22)}.photo{width:86px;height:86px;border-radius:17px;overflow:hidden;background:rgba(255,255,255,.05);display:flex;align-items:center;justify-content:center}.photo img{width:100%;height:100%;object-fit:cover}.photo .no-photo{font-size:32px}.type{font-size:10px;font-weight:900;letter-spacing:2px;margin-bottom:7px}.card:not(.red) .type{color:var(--green)}.card.red .type{color:var(--red)}.address{font-size:18px;font-weight:850;line-height:1.3}.people{color:var(--muted);margin-top:7px;font-size:14px}.meta{color:var(--muted);margin-top:10px;font-size:12px}.map-badge{display:inline-block;margin-top:7px;color:var(--cyan);font-size:12px;font-weight:800}
 .empty{text-align:center;padding:42px 20px;border:1px dashed var(--border);border-radius:24px;color:var(--muted)}.empty .big{font-size:42px;margin-bottom:10px}.empty h3{color:white;margin:0 0 8px}.empty p{margin:0;line-height:1.5}
 .fab{position:fixed;z-index:5;right:20px;bottom:20px;width:60px;height:60px;border:0;border-radius:20px;background:var(--cyan);color:#061017;font-size:32px;box-shadow:0 12px 32px rgba(103,232,249,.28)}
-.overlay{position:fixed;inset:0;z-index:50;display:none;align-items:flex-end;justify-content:center}.overlay.open{display:flex}.backdrop{position:absolute;inset:0;background:rgba(0,0,0,.70);backdrop-filter:blur(7px)}.sheet{position:relative;width:min(760px,100%);max-height:93vh;overflow-y:auto;background:#111827;border:1px solid rgba(255,255,255,.12);border-radius:28px 28px 0 0;padding:22px 20px 30px;box-shadow:0 -20px 70px rgba(0,0,0,.5)}.sheet-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}.sheet h2{margin:4px 0 0;font-size:23px}.close{width:42px;height:42px;border:1px solid var(--border);border-radius:14px;background:rgba(255,255,255,.05);color:white;font-size:25px}
+.overlay{position:fixed;inset:0;z-index:50;display:none;align-items:flex-end;justify-content:center}.overlay.open{display:flex}.backdrop{position:absolute;inset:0;background:rgba(0,0,0,.70);backdrop-filter:blur(7px)}.sheet{position:relative;width:min(760px,100%);max-height:93vh;overflow-y:auto;background:#111827;border:1px solid rgba(255,255,255,.12);border-radius:28px 28px 0 0;padding:22px 20px 30px;box-shadow:0 -20px 70px rgba(0,0,0,.5)}.sheet-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}.sheet h2{margin:4px 0 0;font-size:23px}.edit-hint{color:var(--muted);font-size:12px;margin-top:5px}.close{width:42px;height:42px;border:1px solid var(--border);border-radius:14px;background:rgba(255,255,255,.05);color:white;font-size:25px}
 form{display:grid;gap:8px}form>label{font-size:13px;font-weight:750;color:#dfe7f5;margin-top:7px}input.field,textarea.field{width:100%;border:1px solid var(--border);border-radius:15px;background:rgba(255,255,255,.045);color:white;padding:13px 14px;outline:0}textarea.field{resize:vertical;min-height:72px}input.field:focus,textarea.field:focus{border-color:rgba(103,232,249,.55)}
 .types{display:grid;grid-template-columns:1fr 1fr;gap:10px}.type-choice input{display:none}.type-choice span{display:block;text-align:center;padding:13px;border:1px solid var(--border);border-radius:15px;background:rgba(255,255,255,.04);color:var(--muted);font-weight:850}.type-choice input:checked+span{color:var(--green);border-color:rgba(98,245,165,.45);background:rgba(98,245,165,.08)}.type-choice.red-choice input:checked+span{color:var(--red);border-color:rgba(255,89,100,.45);background:rgba(255,89,100,.08)}
 .photo-picker{display:grid;grid-template-columns:92px 1fr;gap:12px;align-items:center}.preview{width:92px;height:92px;border-radius:18px;overflow:hidden;border:1px dashed var(--border);display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.04)}.preview img{width:100%;height:100%;object-fit:cover}.preview .camera{font-size:34px}.photo-actions{display:grid;gap:8px}.outline-btn{width:100%;border:1px solid rgba(103,232,249,.35);border-radius:14px;padding:11px;background:rgba(103,232,249,.07);color:var(--cyan);font-weight:850}.location-box{border:1px solid var(--border);border-radius:17px;padding:13px;background:rgba(255,255,255,.035)}.location-status{color:var(--muted);font-size:12px;line-height:1.45;margin-top:8px}.coords{font-size:11px;color:#aab4c6;margin-top:5px;word-break:break-all}
@@ -45,7 +45,7 @@ form{display:grid;gap:8px}form>label{font-size:13px;font-weight:750;color:#dfe7f
 <div id="overlay" class="overlay">
   <div id="backdrop" class="backdrop"></div>
   <section class="sheet" role="dialog" aria-modal="true">
-    <div class="sheet-head"><div><span class="eyebrow">NUEVO REGISTRO</span><h2>Agregar domicilio</h2></div><button id="close" class="close">×</button></div>
+    <div class="sheet-head"><div><span class="eyebrow" id="formEyebrow">NUEVO REGISTRO</span><h2 id="formTitle">Agregar domicilio</h2><div class="edit-hint" id="formHint">Guarda una nueva casa o departamento.</div></div><button id="close" class="close">×</button></div>
     <form id="form">
       <label>Foto de fachada</label>
       <div class="photo-picker">
@@ -85,7 +85,7 @@ form{display:grid;gap:8px}form>label{font-size:13px;font-weight:750;color:#dfe7f
       <label for="notas">Notas</label>
       <textarea class="field" id="notas" placeholder="Perro, tocar fuerte, dejar con vecino..."></textarea>
 
-      <button class="save" type="submit">💾 Guardar domicilio</button>
+      <button id="saveBtn" class="save" type="submit">💾 Guardar domicilio</button>
     </form>
   </section>
 </div>
@@ -95,6 +95,7 @@ const DB="directorio_domicilios_v13";
 let data=[];
 let currentPhoto=null;
 let currentLocation=null;
+let editingId=null;
 const $=id=>document.getElementById(id);
 const lines=v=>v.split("\n").map(x=>x.trim()).filter(Boolean);
 const esc=v=>String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]));
@@ -125,19 +126,99 @@ function render(){
  $("houses").textContent=data.filter(d=>d.tipo==="casa").length;
  $("apartments").textContent=data.filter(d=>d.tipo==="departamento").length;
  $("count").textContent=data.length+" "+(data.length===1?"registro":"registros");
- $("list").innerHTML=f.length?f.map(d=>`<article class="card ${d.tipo==="departamento"?"red":""}">
+ $("list").innerHTML=f.length?f.map(d=>`<div class="swipe-wrap" data-id="${d.id}">
+ <div class="swipe-action edit-action">✏️<span>Editar</span></div>
+ <div class="swipe-action delete-action">🗑️<span>Eliminar</span></div>
+ <article class="card ${d.tipo==="departamento"?"red":""}">
  <div class="photo">${d.foto?`<img src="${d.foto}" alt="Fachada">`:`<span class="no-photo">🏠</span>`}</div>
  <div><div class="type">${d.tipo==="departamento"?"🏢 DEPARTAMENTO":"🏠 CASA"}</div>
  <div class="address">${esc(d.direccion)}</div>
  <div class="people">${d.personas?.length?esc(d.personas.join(" · ")):"Sin personas registradas"}</div>
  <div class="meta">${d.direcciones?.length?"🔄 "+d.direcciones.length+" dirección(es) asociada(s)":""}${d.telefonos?.length?" · 📞 "+d.telefonos.length:""}${d.lat!=null?" · 📍 Ubicación guardada":""}</div>
- ${d.lat!=null?`<a class="map-badge" href="${mapUrl(d.lat,d.lng)}" target="_blank" rel="noopener">🗺️ Abrir en Google Maps</a>`:""}</div></article>`).join(""):`<div class="empty"><div class="big">${data.length?"🔎":"🏠"}</div><h3>${data.length?"Sin resultados":"Aún no tienes domicilios"}</h3><p>${data.length?"Prueba otro nombre, dirección o teléfono.":"Pulsa ＋ para registrar tu primer domicilio."}</p></div>`;
+ ${d.lat!=null?`<a class="map-badge" href="${mapUrl(d.lat,d.lng)}" target="_blank" rel="noopener">🗺️ Abrir en Google Maps</a>`:""}</div></article></div>`).join(""):`<div class="empty"><div class="big">${data.length?"🔎":"🏠"}</div><h3>${data.length?"Sin resultados":"Aún no tienes domicilios"}</h3><p>${data.length?"Prueba otro nombre, dirección o teléfono.":"Pulsa ＋ para registrar tu primer domicilio."}</p></div>`;
+ bindSwipes();
 }
 
 function mapUrl(lat,lng){return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(lat+","+lng)}`}
-function open(){currentPhoto=null;currentLocation=null;resetPreview();$("locationStatus").textContent="Todavía no se ha guardado una ubicación.";$("coords").textContent="";$("overlay").classList.add("open");setTimeout(()=>$("direccion").focus(),50)}
-function close(){ $("overlay").classList.remove("open");$("form").reset();resetPreview();currentPhoto=null;currentLocation=null}
+function open(){
+ editingId=null; currentPhoto=null; currentLocation=null;
+ $("form").reset(); resetPreview();
+ $("formEyebrow").textContent="NUEVO REGISTRO";
+ $("formTitle").textContent="Agregar domicilio";
+ $("formHint").textContent="Guarda una nueva casa o departamento.";
+ $("saveBtn").textContent="💾 Guardar domicilio";
+ $("locationStatus").textContent="Todavía no se ha guardado una ubicación.";
+ $("coords").textContent="";
+ $("overlay").classList.add("open");
+ setTimeout(()=>$("direccion").focus(),50);
+}
+function openEdit(id){
+ const d=data.find(x=>String(x.id)===String(id)); if(!d)return;
+ editingId=d.id; currentPhoto=d.foto||null;
+ currentLocation=d.lat!=null?{lat:d.lat,lng:d.lng,accuracy:d.accuracy}:null;
+ $("form").reset();
+ document.querySelector(`input[name="tipo"][value="${d.tipo}"]`).checked=true;
+ $("direccion").value=d.direccion||"";
+ $("direcciones").value=(d.direcciones||[]).join("\n");
+ $("personas").value=(d.personas||[]).join("\n");
+ $("telefonos").value=(d.telefonos||[]).join("\n");
+ $("notas").value=d.notas||"";
+ if(currentPhoto)$("preview").innerHTML=`<img src="${currentPhoto}" alt="Vista previa">`;else resetPreview();
+ $("formEyebrow").textContent="EDITAR DOMICILIO";
+ $("formTitle").textContent="Editar domicilio";
+ $("formHint").textContent="Desliza a la derecha para editar cualquier registro.";
+ $("saveBtn").textContent="💾 Guardar cambios";
+ if(currentLocation){
+  $("locationStatus").textContent="✅ Ubicación guardada.";
+  $("coords").textContent=`Lat ${currentLocation.lat.toFixed(6)} · Lng ${currentLocation.lng.toFixed(6)} · precisión aprox. ${Math.round(currentLocation.accuracy||0)} m`;
+ }else{
+  $("locationStatus").textContent="Todavía no se ha guardado una ubicación.";
+  $("coords").textContent="";
+ }
+ $("overlay").classList.add("open");
+ setTimeout(()=>$("direccion").focus(),50);
+}
+function close(){ $("overlay").classList.remove("open");$("form").reset();resetPreview();currentPhoto=null;currentLocation=null;editingId=null}
 function resetPreview(){$("preview").innerHTML='<span class="camera">📸</span>'}
+
+
+function bindSwipes(){
+ document.querySelectorAll(".swipe-wrap").forEach(wrap=>{
+  const card=wrap.querySelector(".card");
+  let startX=0,startY=0,dx=0,drag=false;
+  const reset=()=>{card.style.transform="translateX(0)";};
+  wrap.addEventListener("touchstart",e=>{
+   if(e.touches.length!==1)return;
+   startX=e.touches[0].clientX; startY=e.touches[0].clientY; dx=0; drag=true;
+   card.style.transition="none";
+  },{passive:true});
+  wrap.addEventListener("touchmove",e=>{
+   if(!drag)return;
+   dx=e.touches[0].clientX-startX;
+   const dy=e.touches[0].clientY-startY;
+   if(Math.abs(dy)>Math.abs(dx)*1.15){drag=false;card.style.transition="transform .18s ease";reset();return;}
+   const limited=Math.max(-125,Math.min(125,dx));
+   card.style.transform=`translateX(${limited}px)`;
+  },{passive:true});
+  wrap.addEventListener("touchend",()=>{
+   if(!drag)return;
+   drag=false;card.style.transition="transform .18s ease";
+   const id=wrap.dataset.id;
+   if(dx>75){card.style.transform="translateX(110px)";setTimeout(()=>{reset();openEdit(id)},140)}
+   else if(dx<-75){card.style.transform="translateX(-110px)";setTimeout(()=>{reset();confirmDelete(id)},140)}
+   else reset();
+  },{passive:true});
+  wrap.addEventListener("touchcancel",()=>{drag=false;card.style.transition="transform .18s ease";reset()},{passive:true});
+ });
+}
+async function confirmDelete(id){
+ const d=data.find(x=>String(x.id)===String(id)); if(!d)return;
+ const ok=confirm(`¿Eliminar este domicilio?\\n\\n${d.direccion}\\n\\nEsta acción no se puede deshacer.`);
+ if(!ok)return;
+ const db=await openDB();
+ await new Promise((res,rej)=>{const tx=db.transaction("domicilios","readwrite");tx.objectStore("domicilios").delete(id);tx.oncomplete=res;tx.onerror=()=>rej(tx.error)});
+ data=data.filter(x=>String(x.id)!==String(id));render();
+}
 
 $("add").onclick=open;$("close").onclick=close;$("backdrop").onclick=close;$("search").oninput=render;
 $("takePhoto").onclick=()=>$("photo").click();
@@ -158,8 +239,24 @@ $("locate").onclick=()=>{
 
 $("form").onsubmit=async e=>{
  e.preventDefault();
- const d={id:crypto.randomUUID(),tipo:new FormData(e.target).get("tipo"),direccion:$("direccion").value.trim(),direcciones:lines($("direcciones").value),personas:lines($("personas").value),telefonos:lines($("telefonos").value),notas:$("notas").value.trim(),foto:currentPhoto||null,lat:currentLocation?.lat??null,lng:currentLocation?.lng??null,accuracy:currentLocation?.accuracy??null,createdAt:new Date().toISOString()};
- await put(d);data.push(d);close();render();
+ const existing=editingId!=null?data.find(x=>String(x.id)===String(editingId)):null;
+ const d={
+  id:editingId!=null?editingId:crypto.randomUUID(),
+  tipo:new FormData(e.target).get("tipo"),
+  direccion:$("direccion").value.trim(),
+  direcciones:lines($("direcciones").value),
+  personas:lines($("personas").value),
+  telefonos:lines($("telefonos").value),
+  notas:$("notas").value.trim(),
+  foto:currentPhoto||null,
+  lat:currentLocation?.lat??null,
+  lng:currentLocation?.lng??null,
+  accuracy:currentLocation?.accuracy??null,
+  createdAt:existing?.createdAt||new Date().toISOString()
+ };
+ await put(d);
+ if(existing)data=data.map(x=>String(x.id)===String(d.id)?d:x);else data.push(d);
+ close();render();
 };
 (async()=>{await migrateOld();await load()})();
 </script>
