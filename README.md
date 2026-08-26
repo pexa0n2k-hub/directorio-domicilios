@@ -1,9 +1,15 @@
 # Directorio Inteligente de Domicilios
+## V1.1
+Primera versión funcional para Android/GitHub Pages.
 
-V1 inicial de una PWA para guardar domicilios de entrega.
+Incluye:
+- Alta de múltiples domicilios.
+- Casa / departamento.
+- Direcciones asociadas.
+- Personas.
+- Teléfonos.
+- Notas.
+- Búsqueda.
+- Persistencia local mediante localStorage.
 
-## Objetivo
-Guardar una casa/departamento como un domicilio físico único, permitiendo múltiples direcciones asociadas, personas, teléfonos, fotos y ubicación.
-
-## Estado
-V1 — esqueleto inicial de interfaz y almacenamiento local.
+Siguiente etapa: ficha completa, fotos de fachada, ubicación GPS y Google Maps.

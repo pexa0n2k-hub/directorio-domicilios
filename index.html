@@ -23,12 +23,12 @@
     </div>
 
     <section class="stats">
-      <div class="stat-card">
+      <div class="stat-card house-stat">
         <span class="stat-icon">🏠</span>
         <strong id="houseCount">0</strong>
         <small>Casas</small>
       </div>
-      <div class="stat-card apartment">
+      <div class="stat-card apartment-stat">
         <span class="stat-icon">🏢</span>
         <strong id="apartmentCount">0</strong>
         <small>Departamentos</small>
@@ -43,17 +43,54 @@
       <span id="totalCount">0 registros</span>
     </section>
 
-    <section id="directoryList" class="directory-list">
-      <div class="empty-state">
-        <div class="empty-icon">🏠</div>
-        <h3>Aún no tienes domicilios</h3>
-        <p>Agrega tu primer domicilio para comenzar tu directorio.</p>
-        <button id="emptyAddButton" class="primary-button">＋ Agregar domicilio</button>
-      </div>
-    </section>
+    <section id="directoryList" class="directory-list"></section>
   </main>
 
   <button id="addButton" class="floating-button" aria-label="Agregar domicilio">＋</button>
+
+  <div id="modal" class="modal hidden">
+    <div class="modal-backdrop" id="modalBackdrop"></div>
+    <section class="modal-card">
+      <div class="modal-header">
+        <div>
+          <span class="eyebrow">NUEVO REGISTRO</span>
+          <h2>Agregar domicilio</h2>
+        </div>
+        <button id="closeModal" class="close-button">×</button>
+      </div>
+
+      <form id="domicilioForm">
+        <label>Tipo de domicilio</label>
+        <div class="type-selector">
+          <label class="type-option house-option">
+            <input type="radio" name="tipo" value="casa" checked>
+            <span>🏠 Casa</span>
+          </label>
+          <label class="type-option apartment-option">
+            <input type="radio" name="tipo" value="departamento">
+            <span>🏢 Departamento</span>
+          </label>
+        </div>
+
+        <label for="direccion">Dirección principal *</label>
+        <input id="direccion" required placeholder="Ej. Calle Tikal Mz 45 Lt 11">
+
+        <label for="direcciones">Direcciones asociadas</label>
+        <textarea id="direcciones" rows="2" placeholder="Una por línea. Ej. Mz 455 Lt 20"></textarea>
+
+        <label for="personas">Personas que reciben</label>
+        <textarea id="personas" rows="2" placeholder="Salvador&#10;Karen&#10;Nora"></textarea>
+
+        <label for="telefonos">Teléfonos</label>
+        <textarea id="telefonos" rows="2" inputmode="tel" placeholder="5530463338&#10;4183290974"></textarea>
+
+        <label for="notas">Notas</label>
+        <textarea id="notas" rows="2" placeholder="Perro, tocar fuerte, dejar con vecino..."></textarea>
+
+        <button class="save-button" type="submit">💾 Guardar domicilio</button>
+      </form>
+    </section>
+  </div>
 
   <script src="app.js"></script>
 </body>
