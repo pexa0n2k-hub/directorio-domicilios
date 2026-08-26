@@ -1,97 +1,96 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#090d16">
-  <title>Directorio de Domicilios</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#090d16">
+<title>Directorio de Domicilios</title>
+<style>
+*{box-sizing:border-box}
+:root{--bg:#080c15;--panel:rgba(19,27,42,.82);--border:rgba(255,255,255,.10);--text:#f5f7ff;--muted:#8e9ab0;--cyan:#67e8f9;--green:#62f5a5;--red:#ff5964}
+html,body{margin:0;min-height:100%;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",sans-serif}
+body{background:radial-gradient(circle at 10% 0%,rgba(103,232,249,.10),transparent 32%),radial-gradient(circle at 95% 15%,rgba(168,85,247,.11),transparent 34%),var(--bg)}
+button,input,textarea{font:inherit}
+button{cursor:pointer}
+.topbar{display:flex;justify-content:space-between;align-items:center;max-width:760px;margin:auto;padding:26px 20px 18px}
+.eyebrow{display:block;color:var(--cyan);font-size:11px;font-weight:900;letter-spacing:3px}
+h1{font-size:26px;margin:5px 0 0}.icon-btn{width:44px;height:44px;border:1px solid var(--border);border-radius:15px;background:var(--panel);color:white}
+.container{max-width:760px;margin:auto;padding:8px 20px 110px}
+.search{display:flex;align-items:center;gap:10px;padding:15px 16px;border:1px solid var(--border);border-radius:20px;background:var(--panel);backdrop-filter:blur(20px)}
+.search span{font-size:22px;color:var(--muted)}.search input{width:100%;border:0;outline:0;background:none;color:white;font-size:16px}.search input::placeholder{color:var(--muted)}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0 28px}.stat{padding:16px;border-radius:21px;border:1px solid rgba(98,245,165,.18);background:linear-gradient(145deg,rgba(98,245,165,.09),var(--panel));display:grid;grid-template-columns:auto 1fr;gap:8px}.stat.red{border-color:rgba(255,89,100,.20);background:linear-gradient(145deg,rgba(255,89,100,.09),var(--panel))}.stat .ico{grid-row:span 2;font-size:28px}.stat b{font-size:20px}.stat small{color:var(--muted)}
+.section-head{display:flex;justify-content:space-between;align-items:end;margin-bottom:12px}.section-head h2{font-size:22px;margin:4px 0 0}.count{color:var(--muted);font-size:13px}.list{display:grid;gap:12px}.card{padding:18px;border:1px solid rgba(98,245,165,.17);border-radius:22px;background:var(--panel);backdrop-filter:blur(18px)}.card.red{border-color:rgba(255,89,100,.22)}.type{font-size:10px;font-weight:900;letter-spacing:2px;margin-bottom:7px}.card:not(.red) .type{color:var(--green)}.card.red .type{color:var(--red)}.address{font-size:18px;font-weight:850;line-height:1.3}.people{color:var(--muted);margin-top:7px;font-size:14px}.meta{color:var(--muted);margin-top:11px;font-size:12px}.empty{text-align:center;padding:42px 20px;border:1px dashed var(--border);border-radius:24px;color:var(--muted)}.empty .big{font-size:42px;margin-bottom:10px}.empty h3{color:white;margin:0 0 8px}.empty p{margin:0;line-height:1.5}
+.fab{position:fixed;z-index:5;right:20px;bottom:20px;width:60px;height:60px;border:0;border-radius:20px;background:var(--cyan);color:#061017;font-size:32px;box-shadow:0 12px 32px rgba(103,232,249,.28)}
+.overlay{position:fixed;inset:0;z-index:50;display:none;align-items:flex-end;justify-content:center}.overlay.open{display:flex}.backdrop{position:absolute;inset:0;background:rgba(0,0,0,.70);backdrop-filter:blur(7px)}
+.sheet{position:relative;width:min(760px,100%);max-height:92vh;overflow-y:auto;background:#111827;border:1px solid rgba(255,255,255,.12);border-radius:28px 28px 0 0;padding:22px 20px 30px;box-shadow:0 -20px 70px rgba(0,0,0,.5)}
+.sheet-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}.sheet h2{margin:4px 0 0;font-size:23px}.close{width:42px;height:42px;border:1px solid var(--border);border-radius:14px;background:rgba(255,255,255,.05);color:white;font-size:25px}
+form{display:grid;gap:8px}form>label{font-size:13px;font-weight:750;color:#dfe7f5;margin-top:7px}
+input.field,textarea.field{width:100%;border:1px solid var(--border);border-radius:15px;background:rgba(255,255,255,.045);color:white;padding:13px 14px;outline:0}textarea.field{resize:vertical;min-height:72px}input.field:focus,textarea.field:focus{border-color:rgba(103,232,249,.55)}
+.types{display:grid;grid-template-columns:1fr 1fr;gap:10px}.type-choice input{display:none}.type-choice span{display:block;text-align:center;padding:13px;border:1px solid var(--border);border-radius:15px;background:rgba(255,255,255,.04);color:var(--muted);font-weight:850}.type-choice input:checked+span{color:var(--green);border-color:rgba(98,245,165,.45);background:rgba(98,245,165,.08)}.type-choice.red-choice input:checked+span{color:var(--red);border-color:rgba(255,89,100,.45);background:rgba(255,89,100,.08)}
+.save{margin-top:12px;width:100%;border:0;border-radius:16px;padding:15px;background:var(--cyan);color:#061017;font-weight:950;font-size:16px}
+@media(min-width:700px){.overlay{align-items:center;padding:20px}.sheet{border-radius:28px}.fab{right:max(20px,calc((100vw - 760px)/2 + 20px))}}
+</style>
 </head>
 <body>
-  <header class="topbar">
-    <div>
-      <span class="eyebrow">DIRECTORIO</span>
-      <h1>Mis domicilios</h1>
-    </div>
-    <button class="icon-button" aria-label="Configuración">⚙️</button>
-  </header>
+<header class="topbar">
+  <div><span class="eyebrow">DIRECTORIO</span><h1>Mis domicilios</h1></div>
+  <button class="icon-btn" aria-label="Configuración">⚙️</button>
+</header>
+<main class="container">
+  <div class="search"><span>⌕</span><input id="search" type="search" placeholder="Buscar nombre, dirección o teléfono..."></div>
+  <section class="stats">
+    <div class="stat"><span class="ico">🏠</span><b id="houses">0</b><small>Casas</small></div>
+    <div class="stat red"><span class="ico">🏢</span><b id="apartments">0</b><small>Departamentos</small></div>
+  </section>
+  <section class="section-head"><div><span class="eyebrow">MI BASE</span><h2>Domicilios</h2></div><span class="count" id="count">0 registros</span></section>
+  <section id="list" class="list"></section>
+</main>
+<button id="add" class="fab">＋</button>
 
-  <main class="container">
-    <div class="search-box">
-      <span>⌕</span>
-      <input id="searchInput" type="search" placeholder="Buscar nombre, dirección o teléfono..." autocomplete="off">
-    </div>
-
-    <section class="stats">
-      <div class="stat-card house-stat">
-        <span class="stat-icon">🏠</span>
-        <strong id="houseCount">0</strong>
-        <small>Casas</small>
+<div id="overlay" class="overlay">
+  <div id="backdrop" class="backdrop"></div>
+  <section class="sheet" role="dialog" aria-modal="true">
+    <div class="sheet-head"><div><span class="eyebrow">NUEVO REGISTRO</span><h2>Agregar domicilio</h2></div><button id="close" class="close">×</button></div>
+    <form id="form">
+      <label>Tipo de domicilio</label>
+      <div class="types">
+        <label class="type-choice"><input type="radio" name="tipo" value="casa" checked><span>🏠 Casa</span></label>
+        <label class="type-choice red-choice"><input type="radio" name="tipo" value="departamento"><span>🏢 Departamento</span></label>
       </div>
-      <div class="stat-card apartment-stat">
-        <span class="stat-icon">🏢</span>
-        <strong id="apartmentCount">0</strong>
-        <small>Departamentos</small>
-      </div>
-    </section>
+      <label for="direccion">Dirección principal *</label>
+      <input class="field" id="direccion" required placeholder="Ej. Calle Tikal Mz 45 Lt 11">
+      <label for="direcciones">Direcciones asociadas</label>
+      <textarea class="field" id="direcciones" placeholder="Una por línea&#10;Ej. Mz 455 Lt 20"></textarea>
+      <label for="personas">Personas que reciben</label>
+      <textarea class="field" id="personas" placeholder="Una por línea&#10;Salvador&#10;Karen&#10;Nora"></textarea>
+      <label for="telefonos">Teléfonos</label>
+      <textarea class="field" id="telefonos" inputmode="tel" placeholder="Uno por línea&#10;5530463338"></textarea>
+      <label for="notas">Notas</label>
+      <textarea class="field" id="notas" placeholder="Perro, tocar fuerte, dejar con vecino..."></textarea>
+      <button class="save" type="submit">💾 Guardar domicilio</button>
+    </form>
+  </section>
+</div>
 
-    <section class="section-header">
-      <div>
-        <span class="eyebrow">MI BASE</span>
-        <h2>Domicilios</h2>
-      </div>
-      <span id="totalCount">0 registros</span>
-    </section>
-
-    <section id="directoryList" class="directory-list"></section>
-  </main>
-
-  <button id="addButton" class="floating-button" aria-label="Agregar domicilio">＋</button>
-
-  <div id="modal" class="modal hidden">
-    <div class="modal-backdrop" id="modalBackdrop"></div>
-    <section class="modal-card">
-      <div class="modal-header">
-        <div>
-          <span class="eyebrow">NUEVO REGISTRO</span>
-          <h2>Agregar domicilio</h2>
-        </div>
-        <button id="closeModal" class="close-button">×</button>
-      </div>
-
-      <form id="domicilioForm">
-        <label>Tipo de domicilio</label>
-        <div class="type-selector">
-          <label class="type-option house-option">
-            <input type="radio" name="tipo" value="casa" checked>
-            <span>🏠 Casa</span>
-          </label>
-          <label class="type-option apartment-option">
-            <input type="radio" name="tipo" value="departamento">
-            <span>🏢 Departamento</span>
-          </label>
-        </div>
-
-        <label for="direccion">Dirección principal *</label>
-        <input id="direccion" required placeholder="Ej. Calle Tikal Mz 45 Lt 11">
-
-        <label for="direcciones">Direcciones asociadas</label>
-        <textarea id="direcciones" rows="2" placeholder="Una por línea. Ej. Mz 455 Lt 20"></textarea>
-
-        <label for="personas">Personas que reciben</label>
-        <textarea id="personas" rows="2" placeholder="Salvador&#10;Karen&#10;Nora"></textarea>
-
-        <label for="telefonos">Teléfonos</label>
-        <textarea id="telefonos" rows="2" inputmode="tel" placeholder="5530463338&#10;4183290974"></textarea>
-
-        <label for="notas">Notas</label>
-        <textarea id="notas" rows="2" placeholder="Perro, tocar fuerte, dejar con vecino..."></textarea>
-
-        <button class="save-button" type="submit">💾 Guardar domicilio</button>
-      </form>
-    </section>
-  </div>
-
-  <script src="app.js"></script>
+<script>
+const KEY="directorio_domicilios_v12";
+let data=JSON.parse(localStorage.getItem(KEY)||"[]");
+const $=id=>document.getElementById(id);
+const lines=v=>v.split("\\n").map(x=>x.trim()).filter(Boolean);
+const esc=v=>String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]));
+function render(){
+ const q=$("search").value.trim().toLowerCase();
+ const f=data.filter(d=>[d.direccion,...d.direcciones,...d.personas,...d.telefonos,d.notas].join(" ").toLowerCase().includes(q));
+ $("houses").textContent=data.filter(d=>d.tipo==="casa").length;
+ $("apartments").textContent=data.filter(d=>d.tipo==="departamento").length;
+ $("count").textContent=data.length+" "+(data.length===1?"registro":"registros");
+ $("list").innerHTML=f.length?f.map(d=>`<article class="card ${d.tipo==="departamento"?"red":""}"><div class="type">${d.tipo==="departamento"?"🏢 DEPARTAMENTO":"🏠 CASA"}</div><div class="address">${esc(d.direccion)}</div><div class="people">${d.personas.length?esc(d.personas.join(" · ")):"Sin personas registradas"}</div><div class="meta">${d.direcciones.length?"🔄 "+d.direcciones.length+" dirección(es) asociada(s)":""}${d.telefonos.length?" · 📞 "+d.telefonos.length:""}</div></article>`).join(""):`<div class="empty"><div class="big">${data.length?"🔎":"🏠"}</div><h3>${data.length?"Sin resultados":"Aún no tienes domicilios"}</h3><p>${data.length?"Prueba otro nombre, dirección o teléfono.":"Pulsa ＋ para registrar tu primer domicilio."}</p></div>`;
+}
+function open(){ $("overlay").classList.add("open"); setTimeout(()=>$("direccion").focus(),50)}
+function close(){ $("overlay").classList.remove("open"); $("form").reset() }
+$("add").onclick=open;$("close").onclick=close;$("backdrop").onclick=close;$("search").oninput=render;
+$("form").onsubmit=e=>{e.preventDefault();data.push({id:Date.now(),tipo:new FormData(e.target).get("tipo"),direccion:$("direccion").value.trim(),direcciones:lines($("direcciones").value),personas:lines($("personas").value),telefonos:lines($("telefonos").value),notas:$("notas").value.trim()});localStorage.setItem(KEY,JSON.stringify(data));close();render()};
+render();
+</script>
 </body>
 </html>
