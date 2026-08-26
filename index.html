@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#090d16">
+  <title>Directorio de Domicilios</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <span class="eyebrow">DIRECTORIO</span>
+      <h1>Mis domicilios</h1>
+    </div>
+    <button class="icon-button" aria-label="Configuración">⚙️</button>
+  </header>
+
+  <main class="container">
+    <div class="search-box">
+      <span>⌕</span>
+      <input id="searchInput" type="search" placeholder="Buscar nombre, dirección o teléfono..." autocomplete="off">
+    </div>
+
+    <section class="stats">
+      <div class="stat-card">
+        <span class="stat-icon">🏠</span>
+        <strong id="houseCount">0</strong>
+        <small>Casas</small>
+      </div>
+      <div class="stat-card apartment">
+        <span class="stat-icon">🏢</span>
+        <strong id="apartmentCount">0</strong>
+        <small>Departamentos</small>
+      </div>
+    </section>
+
+    <section class="section-header">
+      <div>
+        <span class="eyebrow">MI BASE</span>
+        <h2>Domicilios</h2>
+      </div>
+      <span id="totalCount">0 registros</span>
+    </section>
+
+    <section id="directoryList" class="directory-list">
+      <div class="empty-state">
+        <div class="empty-icon">🏠</div>
+        <h3>Aún no tienes domicilios</h3>
+        <p>Agrega tu primer domicilio para comenzar tu directorio.</p>
+        <button id="emptyAddButton" class="primary-button">＋ Agregar domicilio</button>
+      </div>
+    </section>
+  </main>
+
+  <button id="addButton" class="floating-button" aria-label="Agregar domicilio">＋</button>
+
+  <script src="app.js"></script>
+</body>
+</html>
