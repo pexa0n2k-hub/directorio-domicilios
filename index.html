@@ -11,7 +11,7 @@ html,body{margin:0;min-height:100%;background:var(--bg);color:var(--text);font-f
 body{background:radial-gradient(circle at 10% 0%,rgba(103,232,249,.10),transparent 32%),radial-gradient(circle at 95% 15%,rgba(168,85,247,.11),transparent 34%),var(--bg)}
 button,input,textarea{font:inherit}button{cursor:pointer}
 .topbar{display:flex;justify-content:space-between;align-items:center;max-width:760px;margin:auto;padding:26px 20px 18px}.eyebrow{display:block;color:var(--cyan);font-size:11px;font-weight:900;letter-spacing:3px}h1{font-size:26px;margin:5px 0 0}.icon-btn{width:44px;height:44px;border:1px solid var(--border);border-radius:15px;background:var(--panel);color:white}
-.container{max-width:760px;margin:auto;padding:8px 20px 110px}.search{display:flex;align-items:center;gap:10px;padding:15px 16px;border:1px solid var(--border);border-radius:20px;background:var(--panel);backdrop-filter:blur(20px)}.search span{font-size:22px;color:var(--muted)}.search input{width:100%;border:0;outline:0;background:none;color:white;font-size:16px}.search input::placeholder{color:var(--muted)}
+.container{max-width:760px;margin:auto;padding:8px 20px 110px}.search{display:flex;align-items:center;gap:10px;padding:15px 16px;border:1px solid var(--border);border-radius:20px;background:var(--panel);backdrop-filter:blur(20px)}.colony-bar{margin:14px 0 18px;padding:14px 2px 2px}.colony-title{display:flex;justify-content:space-between;align-items:center;margin:0 2px 9px}.colony-title>span:last-child{font-size:12px;color:var(--muted)}.colony-chips{display:flex;gap:8px;overflow-x:auto;padding:2px 2px 7px;scrollbar-width:none}.colony-chips::-webkit-scrollbar{display:none}.colony-chip{flex:0 0 auto;border:1px solid var(--border);background:rgba(255,255,255,.045);color:var(--muted);border-radius:999px;padding:9px 13px;font-size:12px;font-weight:850;white-space:nowrap}.colony-chip.active{color:#071017;background:var(--cyan);border-color:var(--cyan);box-shadow:0 8px 22px rgba(103,232,249,.16)}.colony-group{margin:22px 0 12px}.colony-group:first-child{margin-top:4px}.group-head{display:flex;align-items:center;justify-content:space-between;padding:0 3px 9px}.group-name{font-size:15px;font-weight:950;letter-spacing:.2px}.group-count{font-size:11px;color:var(--muted);padding:5px 9px;border:1px solid var(--border);border-radius:999px;background:rgba(255,255,255,.035)}.search span{font-size:22px;color:var(--muted)}.search input{width:100%;border:0;outline:0;background:none;color:white;font-size:16px}.search input::placeholder{color:var(--muted)}
 .stats{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0 28px}.stat{padding:16px;border-radius:21px;border:1px solid rgba(98,245,165,.18);background:linear-gradient(145deg,rgba(98,245,165,.09),var(--panel));display:grid;grid-template-columns:auto 1fr;gap:8px}.stat.red{border-color:rgba(255,89,100,.20);background:linear-gradient(145deg,rgba(255,89,100,.09),var(--panel))}.stat .ico{grid-row:span 2;font-size:28px}.stat b{font-size:20px}.stat small{color:var(--muted)}
 .section-head{display:flex;justify-content:space-between;align-items:end;margin-bottom:12px}.section-head h2{font-size:22px;margin:4px 0 0}.count{color:var(--muted);font-size:13px}.list{display:grid;gap:12px}
 .swipe-wrap{position:relative;border-radius:22px;overflow:hidden;touch-action:pan-y}.swipe-wrap .card{position:relative;z-index:2;transition:transform .18s ease}.swipe-action{position:absolute;inset:0;display:flex;align-items:center;gap:7px;padding:0 24px;font-weight:900;font-size:14px;opacity:.92}.swipe-action span{font-size:11px;letter-spacing:1px;text-transform:uppercase}.edit-action{justify-content:flex-start;background:linear-gradient(90deg,rgba(98,245,165,.25),rgba(98,245,165,.08));color:var(--green)}.delete-action{justify-content:flex-end;background:linear-gradient(90deg,rgba(255,89,100,.08),rgba(255,89,100,.28));color:var(--red)}.card{position:relative;overflow:hidden;padding:14px;border:1px solid rgba(98,245,165,.17);border-radius:22px;background:var(--panel);backdrop-filter:blur(18px);display:grid;grid-template-columns:86px 1fr;gap:14px}.card.red{border-color:rgba(255,89,100,.22)}.photo{width:86px;height:86px;border-radius:17px;overflow:hidden;background:rgba(255,255,255,.05);display:flex;align-items:center;justify-content:center}.photo img{width:100%;height:100%;object-fit:cover}.photo .no-photo{font-size:32px}.type{font-size:10px;font-weight:900;letter-spacing:2px;margin-bottom:7px}.card:not(.red) .type{color:var(--green)}.card.red .type{color:var(--red)}.address{font-size:18px;font-weight:850;line-height:1.3}.people{color:var(--muted);margin-top:7px;font-size:14px}.meta{color:var(--muted);margin-top:10px;font-size:12px}.map-badge{display:inline-block;margin-top:7px;color:var(--cyan);font-size:12px;font-weight:800}
@@ -33,6 +33,10 @@ form{display:grid;gap:8px}form>label{font-size:13px;font-weight:750;color:#dfe7f
 </header>
 <main class="container">
   <div class="search"><span>⌕</span><input id="search" type="search" placeholder="Buscar nombre, dirección o teléfono..."></div>
+  <div class="colony-bar">
+    <div class="colony-title"><span class="eyebrow">ZONAS</span><span id="colonyCount">0 colonias</span></div>
+    <div id="colonyChips" class="colony-chips"></div>
+  </div>
   <section class="stats">
     <div class="stat"><span class="ico">🏠</span><b id="houses">0</b><small>Casas</small></div>
     <div class="stat red"><span class="ico">🏢</span><b id="apartments">0</b><small>Departamentos</small></div>
@@ -62,6 +66,9 @@ form{display:grid;gap:8px}form>label{font-size:13px;font-weight:750;color:#dfe7f
         <label class="type-choice"><input type="radio" name="tipo" value="casa" checked><span>🏠 Casa</span></label>
         <label class="type-choice red-choice"><input type="radio" name="tipo" value="departamento"><span>🏢 Departamento</span></label>
       </div>
+
+      <label for="colonia">Colonia *</label>
+      <input class="field" id="colonia" required placeholder="Ej. Américas 1">
 
       <label for="direccion">Dirección principal *</label>
       <input class="field" id="direccion" required placeholder="Ej. Calle Tikal Mz 45 Lt 11">
@@ -96,6 +103,7 @@ let data=[];
 let currentPhoto=null;
 let currentLocation=null;
 let editingId=null;
+let selectedColony="Todas";
 const $=id=>document.getElementById(id);
 const lines=v=>v.split("\n").map(x=>x.trim()).filter(Boolean);
 const esc=v=>String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]));
@@ -107,7 +115,7 @@ function openDB(){
   req.onsuccess=()=>resolve(req.result);req.onerror=()=>reject(req.error);
  });
 }
-async function load(){const db=await openDB();data=await new Promise((res,rej)=>{const tx=db.transaction("domicilios","readonly"),r=tx.objectStore("domicilios").getAll();r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error)});render();}
+async function load(){const db=await openDB();data=await new Promise((res,rej)=>{const tx=db.transaction("domicilios","readonly"),r=tx.objectStore("domicilios").getAll();r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error)});data=data.map(d=>({...d,colonia:d.colonia||"Sin colonia"}));render();}
 async function put(item){const db=await openDB();return new Promise((res,rej)=>{const tx=db.transaction("domicilios","readwrite");tx.objectStore("domicilios").put(item);tx.oncomplete=res;tx.onerror=()=>rej(tx.error)})}
 
 async function migrateOld(){
@@ -115,27 +123,47 @@ async function migrateOld(){
  if(!old)return;
  try{
   const oldData=JSON.parse(old);
-  if(oldData.length){for(const d of oldData)await put(d)}
+  if(oldData.length){for(const d of oldData){d.colonia=d.colonia||"Sin colonia";await put(d)}}
   localStorage.removeItem("directorio_domicilios_v12");
  }catch(e){}
 }
 
 function render(){
  const q=$("search").value.trim().toLowerCase();
- const f=data.filter(d=>[d.direccion,...(d.direcciones||[]),...(d.personas||[]),...(d.telefonos||[]),d.notas].join(" ").toLowerCase().includes(q));
+ const colonies=[...new Set(data.map(d=>(d.colonia||"Sin colonia").trim()).filter(Boolean))].sort((a,b)=>a.localeCompare(b,"es",{sensitivity:"base"}));
+ if(selectedColony!=="Todas" && !colonies.includes(selectedColony))selectedColony="Todas";
+ $("colonyCount").textContent=colonies.length+" "+(colonies.length===1?"colonia":"colonias");
+ $("colonyChips").innerHTML=`<button class="colony-chip ${selectedColony==="Todas"?"active":""}" data-colony="Todas">Todas · ${data.length}</button>`+
+ colonies.map(c=>`<button class="colony-chip ${selectedColony===c?"active":""}" data-colony="${esc(c)}">${esc(c)} · ${data.filter(d=>(d.colonia||"Sin colonia")===c).length}</button>`).join("");
+ document.querySelectorAll(".colony-chip").forEach(btn=>btn.onclick=()=>{selectedColony=btn.dataset.colony;render()});
+
  $("houses").textContent=data.filter(d=>d.tipo==="casa").length;
  $("apartments").textContent=data.filter(d=>d.tipo==="departamento").length;
  $("count").textContent=data.length+" "+(data.length===1?"registro":"registros");
- $("list").innerHTML=f.length?f.map(d=>`<div class="swipe-wrap" data-id="${d.id}">
- <div class="swipe-action edit-action">✏️<span>Editar</span></div>
- <div class="swipe-action delete-action">🗑️<span>Eliminar</span></div>
- <article class="card ${d.tipo==="departamento"?"red":""}">
- <div class="photo">${d.foto?`<img src="${d.foto}" alt="Fachada">`:`<span class="no-photo">🏠</span>`}</div>
- <div><div class="type">${d.tipo==="departamento"?"🏢 DEPARTAMENTO":"🏠 CASA"}</div>
- <div class="address">${esc(d.direccion)}</div>
- <div class="people">${d.personas?.length?esc(d.personas.join(" · ")):"Sin personas registradas"}</div>
- <div class="meta">${d.direcciones?.length?"🔄 "+d.direcciones.length+" dirección(es) asociada(s)":""}${d.telefonos?.length?" · 📞 "+d.telefonos.length:""}${d.lat!=null?" · 📍 Ubicación guardada":""}</div>
- ${d.lat!=null?`<a class="map-badge" href="${mapUrl(d.lat,d.lng)}" target="_blank" rel="noopener">🗺️ Abrir en Google Maps</a>`:""}</div></article></div>`).join(""):`<div class="empty"><div class="big">${data.length?"🔎":"🏠"}</div><h3>${data.length?"Sin resultados":"Aún no tienes domicilios"}</h3><p>${data.length?"Prueba otro nombre, dirección o teléfono.":"Pulsa ＋ para registrar tu primer domicilio."}</p></div>`;
+
+ let filtered=data.filter(d=>{
+   const colony=d.colonia||"Sin colonia";
+   const hay=[colony,d.direccion,...(d.direcciones||[]),...(d.personas||[]),...(d.telefonos||[]),d.notas].join(" ").toLowerCase();
+   return (selectedColony==="Todas"||colony===selectedColony) && hay.includes(q);
+ });
+ const groups={};
+ filtered.forEach(d=>{const c=d.colonia||"Sin colonia";(groups[c]??=[]).push(d)});
+ const names=Object.keys(groups).sort((a,b)=>a.localeCompare(b,"es",{sensitivity:"base"}));
+
+ $("list").innerHTML=names.length?names.map(c=>`<section class="colony-group">
+   <div class="group-head"><div class="group-name">📍 ${esc(c)}</div><div class="group-count">${groups[c].length} ${groups[c].length===1?"domicilio":"domicilios"}</div></div>
+   <div class="list">${groups[c].map(d=>`<div class="swipe-wrap" data-id="${d.id}">
+    <div class="swipe-action edit-action">✏️<span>Editar</span></div>
+    <div class="swipe-action delete-action">🗑️<span>Eliminar</span></div>
+    <article class="card ${d.tipo==="departamento"?"red":""}">
+      <div class="photo">${d.foto?`<img src="${d.foto}" alt="Fachada">`:`<span class="no-photo">🏠</span>`}</div>
+      <div><div class="type">${d.tipo==="departamento"?"🏢 DEPARTAMENTO":"🏠 CASA"}</div>
+      <div class="address">${esc(d.direccion)}</div>
+      <div class="people">${d.personas?.length?esc(d.personas.join(" · ")):"Sin personas registradas"}</div>
+      <div class="meta">${d.direcciones?.length?"🔄 "+d.direcciones.length+" dirección(es) asociada(s)":""}${d.telefonos?.length?" · 📞 "+d.telefonos.length:""}${d.lat!=null?" · 📍 Ubicación guardada":""}</div>
+      ${d.lat!=null?`<a class="map-badge" href="${mapUrl(d.lat,d.lng)}" target="_blank" rel="noopener">🗺️ Abrir en Google Maps</a>`:""}</div>
+    </article></div>`).join("")}</div>
+ </section>`).join(""):`<div class="empty"><div class="big">${data.length?"🔎":"🏠"}</div><h3>${data.length?"Sin resultados":"Aún no tienes domicilios"}</h3><p>${data.length?"Prueba otro nombre, dirección o teléfono.":"Pulsa ＋ para registrar tu primer domicilio."}</p></div>`;
  bindSwipes();
 }
 
@@ -158,6 +186,7 @@ function openEdit(id){
  currentLocation=d.lat!=null?{lat:d.lat,lng:d.lng,accuracy:d.accuracy}:null;
  $("form").reset();
  document.querySelector(`input[name="tipo"][value="${d.tipo}"]`).checked=true;
+ $("colonia").value=d.colonia||"Sin colonia";
  $("direccion").value=d.direccion||"";
  $("direcciones").value=(d.direcciones||[]).join("\n");
  $("personas").value=(d.personas||[]).join("\n");
@@ -243,6 +272,7 @@ $("form").onsubmit=async e=>{
  const d={
   id:editingId!=null?editingId:crypto.randomUUID(),
   tipo:new FormData(e.target).get("tipo"),
+  colonia:$("colonia").value.trim(),
   direccion:$("direccion").value.trim(),
   direcciones:lines($("direcciones").value),
   personas:lines($("personas").value),
