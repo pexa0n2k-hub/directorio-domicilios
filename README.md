@@ -1,9 +1,7 @@
-# Directorio de Domicilios — V2.2
+# Directorio de Domicilios — V2.3 Clean
 
-Limpieza de interfaz solicitada:
-- Eliminadas las secciones "ACCIONES RÁPIDAS" y "MIS ZONAS".
-- No se modificó la barra de navegación inferior.
-- Se mantienen el botón central para agregar domicilio y el botón MAPA/slide de colonias.
-- Se mantienen buscador, estadísticas, domicilios, fotos ampliables, Google Maps,
-  direcciones asociadas, personas, teléfonos, notas y edición/eliminación por gesto.
-- Se conserva el estilo Liquid Glass + Neon.
+Se eliminaron completamente de la interfaz:
+- ACCIONES RÁPIDAS
+- COLONIAS GUARDADAS / MIS ZONAS
+
+No se alteran las funciones restantes ni la navegación inferior.

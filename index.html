@@ -58,6 +58,7 @@ body{padding-bottom:calc(92px + env(safe-area-inset-bottom))}
 .quick-actions{margin-bottom:18px}.domicile-section-head{margin-bottom:8px}
 @media(max-width:380px){.bottom-nav{width:96vw;grid-template-columns:1fr 1fr 68px 1fr 1fr}.nav-item{font-size:7px}.nav-add{width:58px;height:58px}}
 
+
 </style>
 </head>
 <body>
@@ -98,23 +99,13 @@ body{padding-bottom:calc(92px + env(safe-area-inset-bottom))}
     </div>
   </section>
 
-  <section class="quick-actions">
-    <div class="quick-head"><span class="eyebrow">ACCIONES RÁPIDAS</span></div>
-    <div class="quick-grid">
-      <button type="button" id="quickNew" class="quick-action">＋ <span>Nuevo domicilio</span></button>
-      <button type="button" id="quickSearch" class="quick-action">⌕ <span>Buscar domicilio</span></button>
-      <button type="button" id="quickColonies" class="quick-action">⌾ <span>Ver colonias</span></button>
-    </div>
-  </section>
+  
 
   <section class="recent-card" id="recentCard" hidden></section>
 
-  <section class="section-head colony-section-head">
-    <div><span class="eyebrow">COLONIAS GUARDADAS</span><h2>Mis zonas</h2></div>
-    <span class="count" id="count">0 registros</span>
-  </section>
+  
 
-  <section class="dashboard-colonies" id="dashboardColonies"></section>
+  
 
   <section class="section-head domicile-section-head"><div><span class="eyebrow">MI BASE</span><h2>Domicilios</h2></div></section>
   <section id="list" class="list"></section>
@@ -460,14 +451,7 @@ function renderDashboard(){
  const groups={};
  data.forEach(d=>{const c=(d.colonia||"Sin colonia").trim()||"Sin colonia";(groups[c]??=[]).push(d)});
  const names=Object.keys(groups).sort((a,b)=>a.localeCompare(b,"es",{sensitivity:"base"}));
- $("dashboardColonies").innerHTML=names.length?names.slice(0,6).map(c=>`
-  <button type="button" class="dashboard-colony" data-zone="${esc(c)}">
-   <span class="zone-icon">⌾</span>
-   <span><span class="zone-name">${esc(c)}</span><span class="zone-count">${groups[c].length} ${groups[c].length===1?"domicilio":"domicilios"}</span></span>
-   <span class="zone-arrow">›</span>
-  </button>`).join(""):`<div class="empty"><div class="big">⌾</div><h3>Aún no tienes colonias</h3><p>Agrega tu primer domicilio para crear tu base.</p></div>`;
- document.querySelectorAll(".dashboard-colony").forEach(btn=>btn.onclick=()=>{selectedColony=btn.dataset.zone;render()});
- const recent=data[data.length-1];
+const recent=data[data.length-1];
  const recentCard=$("recentCard");
  if(recent){
   recentCard.hidden=false;
@@ -517,9 +501,7 @@ async function confirmDelete(id){
 }
 
 $("add").onclick=open;
-$("quickNew").onclick=open;
-$("quickSearch").onclick=()=>{ $("search").focus(); $("search").scrollIntoView({behavior:"smooth",block:"center"}); };
-$("quickColonies").onclick=()=>setColonyDrawer(true);
+$("search").scrollIntoView({behavior:"smooth",block:"center"}); };
 $("navHome").onclick=()=>window.scrollTo({top:0,behavior:"smooth"});
 $("navHistory").onclick=()=>window.scrollTo({top:document.body.scrollHeight,behavior:"smooth"});
 $("navMore").onclick=()=>alert("Más funciones estarán disponibles próximamente.");
