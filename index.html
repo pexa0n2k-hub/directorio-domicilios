@@ -28,6 +28,10 @@ form{display:grid;gap:8px}form>label{font-size:13px;font-weight:750;color:#dfe7f
 
 .select-field{width:100%;display:flex;justify-content:space-between;align-items:center;min-height:58px;padding:14px 16px;border:1px solid var(--border);border-radius:18px;background:rgba(255,255,255,.045);color:var(--text);font:inherit;text-align:left;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);box-shadow:inset 0 1px 0 rgba(255,255,255,.035);transition:.2s ease}.select-field:active{transform:scale(.99);border-color:rgba(98,234,255,.42)}.select-field span:first-child{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.select-chevron{font-size:22px;color:var(--muted);margin-left:12px}.picker-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.46);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);opacity:0;pointer-events:none;transition:opacity .24s ease;z-index:140}.picker-backdrop.open{opacity:1;pointer-events:auto}.picker-sheet{position:fixed;left:0;right:0;bottom:0;max-height:78vh;padding:9px 18px calc(20px + env(safe-area-inset-bottom));background:rgba(12,20,34,.94);border-top:1px solid rgba(255,255,255,.14);border-radius:30px 30px 0 0;box-shadow:0 -22px 70px rgba(0,0,0,.42),inset 0 1px 0 rgba(255,255,255,.035);backdrop-filter:blur(34px) saturate(140%);-webkit-backdrop-filter:blur(34px) saturate(140%);transform:translateY(105%);transition:transform .3s cubic-bezier(.22,.8,.25,1);z-index:150;overflow-y:auto}.picker-sheet.open{transform:translateY(0)}.picker-grab{width:44px;height:4px;border-radius:99px;background:rgba(255,255,255,.2);margin:2px auto 17px}.picker-head{display:flex;justify-content:space-between;align-items:flex-start;padding:0 2px 17px;border-bottom:1px solid rgba(255,255,255,.08)}.picker-head h3{margin:5px 0 3px;font-size:22px;letter-spacing:-.3px}.picker-head p{margin:0;color:var(--muted);font-size:12px;line-height:1.35}.picker-close{width:42px;height:42px;border:1px solid rgba(255,255,255,.1);border-radius:14px;background:rgba(255,255,255,.055);color:var(--text);font-size:28px;line-height:1}.saved-colonies{display:flex;flex-direction:column;gap:8px;padding:16px 0;max-height:42vh;overflow-y:auto}.colony-option{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;min-height:56px;padding:12px 15px;border:1px solid var(--border);border-radius:17px;background:rgba(255,255,255,.04);color:var(--text);font:inherit;text-align:left;transition:.18s ease}.colony-option:active{transform:scale(.985)}.colony-option.selected{border-color:rgba(98,234,255,.52);background:rgba(98,234,255,.085);box-shadow:inset 0 0 20px rgba(98,234,255,.035),0 0 18px rgba(98,234,255,.045)}.colony-option .colony-name{font-weight:700}.colony-option .colony-meta{color:var(--muted);font-size:11px;white-space:nowrap}.colony-option.selected .colony-meta{color:#62eaff}.new-colony-row{display:flex;gap:9px;position:sticky;bottom:0;padding-top:11px;background:linear-gradient(transparent,rgba(12,20,34,.98) 22%)}.new-colony-row .field{flex:1;min-width:0}.add-colony-btn{width:56px;min-width:56px;border:1px solid rgba(98,234,255,.32);border-radius:17px;background:rgba(98,234,255,.1);color:#62eaff;font-size:26px;box-shadow:inset 0 0 18px rgba(98,234,255,.035)}.empty-colonies{padding:24px 8px;color:var(--muted);text-align:center;font-size:13px;line-height:1.5}
 
+
+.photo.has-photo{cursor:zoom-in;position:relative}.photo.has-photo::after{content:"⌕";position:absolute;right:7px;bottom:7px;width:25px;height:25px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(8,13,24,.62);border:1px solid rgba(255,255,255,.18);color:#fff;font-size:16px;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}.photo.has-photo:active{transform:scale(.97)}
+.image-viewer{position:fixed;inset:0;z-index:300;display:flex;align-items:center;justify-content:center;padding:18px;background:rgba(3,7,15,.88);backdrop-filter:blur(22px) saturate(125%);-webkit-backdrop-filter:blur(22px) saturate(125%);opacity:0;pointer-events:none;transition:opacity .22s ease}.image-viewer.open{opacity:1;pointer-events:auto}.image-viewer img{display:block;max-width:96vw;max-height:88vh;width:auto;height:auto;object-fit:contain;border-radius:18px;box-shadow:0 20px 70px rgba(0,0,0,.55);user-select:none;-webkit-user-drag:none;touch-action:pinch-zoom}.viewer-close{position:absolute;top:max(18px,env(safe-area-inset-top));right:18px;width:46px;height:46px;border-radius:15px;border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.08);color:#fff;font-size:29px;z-index:2;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}.viewer-hint{position:absolute;bottom:max(18px,env(safe-area-inset-bottom));left:0;right:0;text-align:center;color:rgba(255,255,255,.62);font-size:12px;pointer-events:none}
+
 </style>
 </head>
 <body>
@@ -140,6 +144,12 @@ form{display:grid;gap:8px}form>label{font-size:13px;font-weight:750;color:#dfe7f
   </section>
 </div>
 
+
+<div id="imageViewer" class="image-viewer" aria-hidden="true">
+  <button type="button" id="viewerClose" class="viewer-close" aria-label="Cerrar imagen">×</button>
+  <img id="viewerImage" src="" alt="Fachada ampliada">
+  <div class="viewer-hint">Toca × para cerrar · Pellizca para ampliar</div>
+</div>
 <script>
 const DB="directorio_domicilios_v13";
 let data=[];
@@ -199,7 +209,7 @@ function render(){
     <div class="swipe-action edit-action">✏️<span>Editar</span></div>
     <div class="swipe-action delete-action">🗑️<span>Eliminar</span></div>
     <article class="card ${d.tipo==="departamento"?"red":""}">
-      <div class="photo">${d.foto?`<img src="${d.foto}" alt="Fachada">`:`<span class="no-photo">🏠</span>`}</div>
+      <div class="photo ${d.foto?"has-photo":""}" ${d.foto?`data-photo-id="${esc(String(d.id))}" role="button" tabindex="0" aria-label="Ver fachada ampliada"`:""}>${d.foto?`<img src="${d.foto}" alt="Fachada">`:`<span class="no-photo">🏠</span>`}</div>
       <div><div class="type">${d.tipo==="departamento"?"🏢 DEPARTAMENTO":"🏠 CASA"}</div>
       <div class="address">${esc(d.direccion)}</div>
       <div class="people">${d.personas?.length?esc(d.personas.join(" · ")):"Sin personas registradas"}</div>
@@ -338,6 +348,35 @@ $("closeColonyPicker").onclick=()=>setColonyPicker(false);
 $("colonyPickerBackdrop").onclick=()=>setColonyPicker(false);
 $("addColony").onclick=addColony;
 $("newColonyName").addEventListener("keydown",e=>{if(e.key==="Enter"){e.preventDefault();addColony()}});
+
+
+function openImageViewer(id){
+ const d=data.find(x=>String(x.id)===String(id));
+ if(!d?.foto)return;
+ $("viewerImage").src=d.foto;
+ $("viewerImage").alt=`Fachada de ${d.direccion||"domicilio"}`;
+ $("imageViewer").classList.add("open");
+ $("imageViewer").setAttribute("aria-hidden","false");
+ document.body.style.overflow="hidden";
+}
+function closeImageViewer(){
+ $("imageViewer").classList.remove("open");
+ $("imageViewer").setAttribute("aria-hidden","true");
+ $("viewerImage").src="";
+ document.body.style.overflow="";
+}
+$("viewerClose").onclick=closeImageViewer;
+$("imageViewer").addEventListener("click",e=>{if(e.target===$("imageViewer"))closeImageViewer()});
+$("viewerImage").addEventListener("click",e=>e.stopPropagation());
+$("list").addEventListener("click",e=>{
+ const photo=e.target.closest(".has-photo");
+ if(photo)openImageViewer(photo.dataset.photoId);
+});
+$("list").addEventListener("keydown",e=>{
+ const photo=e.target.closest(".has-photo");
+ if(photo&&(e.key==="Enter"||e.key===" ")){e.preventDefault();openImageViewer(photo.dataset.photoId);}
+});
+document.addEventListener("keydown",e=>{if(e.key==="Escape")closeImageViewer()});
 
 function bindSwipes(){
  document.querySelectorAll(".swipe-wrap").forEach(wrap=>{

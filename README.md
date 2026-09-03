@@ -1,23 +1,18 @@
-# Directorio Inteligente de Domicilios — V1.9
+# Directorio Inteligente de Domicilios — V1.10
 
-## Selector de colonias
-- El campo "Colonia" ya no es un input libre.
-- Al tocarlo se abre un panel slide-up tipo Liquid Glass.
-- Las colonias guardadas aparecen en una lista reutilizable.
-- Cada colonia muestra cuántos domicilios tiene.
-- Se puede seleccionar una colonia existente con un toque.
-- Se puede agregar una colonia nueva desde el mismo panel.
-- La lista de colonias se guarda independientemente de los domicilios para evitar perderla.
-- Los nombres se normalizan para evitar duplicados por mayúsculas/minúsculas o espacios.
-- Ejemplo: "Américas 1", "américas 1" y "  Américas   1 " se consideran la misma colonia.
+Novedad:
+- La foto de fachada de cada tarjeta ahora es interactiva.
+- Toca la miniatura para abrirla en pantalla completa.
+- La imagen se muestra con mayor tamaño y sin recorte (object-fit contain).
+- En Android puedes usar pellizcar para ampliar todavía más.
+- Se puede cerrar con X, tocando fuera de la imagen o con la tecla Escape.
 
 Se conserva todo lo anterior:
+- Colonias reutilizables mediante panel slide-up.
+- Casas / departamentos.
 - Foto de fachada.
-- Ubicación y enlace a Google Maps.
+- Ubicación y Google Maps.
 - Direcciones asociadas.
-- Personas que reciben.
-- Teléfonos.
-- Notas.
-- Casa / departamento.
-- Menú lateral de colonias.
-- Gestos: deslizar derecha para editar y izquierda para eliminar.
+- Personas, teléfonos y notas.
+- Gestos de editar / eliminar.
+- Liquid Glass minimalista.
