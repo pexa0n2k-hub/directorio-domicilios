@@ -25,6 +25,9 @@ form{display:grid;gap:8px}form>label{font-size:13px;font-weight:750;color:#dfe7f
 .detail-actions{display:flex;gap:8px;margin-top:12px}.small-btn{flex:1;border:1px solid var(--border);border-radius:13px;padding:10px;background:rgba(255,255,255,.05);color:white;font-weight:800}.small-btn.maps{color:var(--cyan);border-color:rgba(103,232,249,.3)}
 @media(min-width:700px){.overlay{align-items:center;padding:20px}.sheet{border-radius:28px}.fab{right:max(20px,calc((100vw - 760px)/2 + 20px))}}
 .map-menu-btn{position:absolute;top:18px;left:18px;width:52px;height:52px;border:1px solid rgba(93,231,255,.18);border-radius:18px;background:rgba(255,255,255,.045);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);box-shadow:0 12px 35px rgba(0,0,0,.22),inset 0 0 18px rgba(80,220,255,.035);display:grid;place-items:center;z-index:20;transition:.2s ease}.map-menu-btn:active{transform:scale(.94)}.map-neon-icon{width:29px;height:29px;overflow:visible}.map-fold{fill:rgba(70,225,255,.045);stroke:#62eaff;stroke-width:2.2;stroke-linejoin:round;filter:drop-shadow(0 0 3px rgba(98,234,255,.95))}.map-line{fill:none;stroke:#9a7cff;stroke-width:2;stroke-linecap:round;filter:drop-shadow(0 0 3px rgba(154,124,255,.9))}.pin-ring{fill:rgba(255,77,205,.12);stroke:#ff5bd8;stroke-width:2.2;filter:drop-shadow(0 0 4px rgba(255,91,216,.95))}.pin-dot{fill:#fff;filter:drop-shadow(0 0 4px #fff)}.map-menu-btn:active{transform:scale(.94)}.drawer-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.42);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);opacity:0;pointer-events:none;transition:opacity .25s ease;z-index:80}.drawer-backdrop.open{opacity:1;pointer-events:auto}.colony-drawer{position:fixed;left:0;top:0;bottom:0;width:min(88vw,360px);padding:24px 18px;background:rgba(12,20,34,.88);border-right:1px solid rgba(255,255,255,.12);box-shadow:18px 0 55px rgba(0,0,0,.38);backdrop-filter:blur(30px) saturate(130%);-webkit-backdrop-filter:blur(30px) saturate(130%);transform:translateX(-105%);transition:transform .28s cubic-bezier(.22,.8,.25,1);z-index:90;overflow-y:auto}.colony-drawer.open{transform:translateX(0)}.drawer-head{display:flex;justify-content:space-between;align-items:flex-start;padding:8px 4px 22px;border-bottom:1px solid rgba(255,255,255,.08)}.drawer-head h3{margin:5px 0 2px;font-size:26px;letter-spacing:-.5px}.drawer-count{font-size:12px;color:var(--muted)}.drawer-close{width:42px;height:42px;border-radius:14px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.06);color:var(--text);font-size:28px;line-height:1}.drawer-list{display:flex;flex-direction:column;gap:9px;padding-top:18px}.drawer-list .colony-chip{display:flex;width:100%;justify-content:space-between;align-items:center;text-align:left;border-radius:16px;padding:14px 15px;font-size:14px}.drawer-list .colony-chip::after{content:"›";font-size:22px;opacity:.55}.drawer-list .colony-chip.active::after{content:"✓";opacity:1}.hero{padding-left:82px}@media(max-width:430px){.hero{padding-left:78px}}
+
+.select-field{width:100%;display:flex;justify-content:space-between;align-items:center;min-height:58px;padding:14px 16px;border:1px solid var(--border);border-radius:18px;background:rgba(255,255,255,.045);color:var(--text);font:inherit;text-align:left;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);box-shadow:inset 0 1px 0 rgba(255,255,255,.035);transition:.2s ease}.select-field:active{transform:scale(.99);border-color:rgba(98,234,255,.42)}.select-field span:first-child{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.select-chevron{font-size:22px;color:var(--muted);margin-left:12px}.picker-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.46);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);opacity:0;pointer-events:none;transition:opacity .24s ease;z-index:140}.picker-backdrop.open{opacity:1;pointer-events:auto}.picker-sheet{position:fixed;left:0;right:0;bottom:0;max-height:78vh;padding:9px 18px calc(20px + env(safe-area-inset-bottom));background:rgba(12,20,34,.94);border-top:1px solid rgba(255,255,255,.14);border-radius:30px 30px 0 0;box-shadow:0 -22px 70px rgba(0,0,0,.42),inset 0 1px 0 rgba(255,255,255,.035);backdrop-filter:blur(34px) saturate(140%);-webkit-backdrop-filter:blur(34px) saturate(140%);transform:translateY(105%);transition:transform .3s cubic-bezier(.22,.8,.25,1);z-index:150;overflow-y:auto}.picker-sheet.open{transform:translateY(0)}.picker-grab{width:44px;height:4px;border-radius:99px;background:rgba(255,255,255,.2);margin:2px auto 17px}.picker-head{display:flex;justify-content:space-between;align-items:flex-start;padding:0 2px 17px;border-bottom:1px solid rgba(255,255,255,.08)}.picker-head h3{margin:5px 0 3px;font-size:22px;letter-spacing:-.3px}.picker-head p{margin:0;color:var(--muted);font-size:12px;line-height:1.35}.picker-close{width:42px;height:42px;border:1px solid rgba(255,255,255,.1);border-radius:14px;background:rgba(255,255,255,.055);color:var(--text);font-size:28px;line-height:1}.saved-colonies{display:flex;flex-direction:column;gap:8px;padding:16px 0;max-height:42vh;overflow-y:auto}.colony-option{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;min-height:56px;padding:12px 15px;border:1px solid var(--border);border-radius:17px;background:rgba(255,255,255,.04);color:var(--text);font:inherit;text-align:left;transition:.18s ease}.colony-option:active{transform:scale(.985)}.colony-option.selected{border-color:rgba(98,234,255,.52);background:rgba(98,234,255,.085);box-shadow:inset 0 0 20px rgba(98,234,255,.035),0 0 18px rgba(98,234,255,.045)}.colony-option .colony-name{font-weight:700}.colony-option .colony-meta{color:var(--muted);font-size:11px;white-space:nowrap}.colony-option.selected .colony-meta{color:#62eaff}.new-colony-row{display:flex;gap:9px;position:sticky;bottom:0;padding-top:11px;background:linear-gradient(transparent,rgba(12,20,34,.98) 22%)}.new-colony-row .field{flex:1;min-width:0}.add-colony-btn{width:56px;min-width:56px;border:1px solid rgba(98,234,255,.32);border-radius:17px;background:rgba(98,234,255,.1);color:#62eaff;font-size:26px;box-shadow:inset 0 0 18px rgba(98,234,255,.035)}.empty-colonies{padding:24px 8px;color:var(--muted);text-align:center;font-size:13px;line-height:1.5}
+
 </style>
 </head>
 <body>
@@ -84,8 +87,31 @@ form{display:grid;gap:8px}form>label{font-size:13px;font-weight:750;color:#dfe7f
         <label class="type-choice red-choice"><input type="radio" name="tipo" value="departamento"><span>🏢 Departamento</span></label>
       </div>
 
-      <label for="colonia">Colonia *</label>
-      <input class="field" id="colonia" required placeholder="Ej. Américas 1">
+      <label>Colonia *</label>
+      <button type="button" id="coloniaPicker" class="select-field" aria-label="Seleccionar colonia">
+        <span id="coloniaValue">Seleccionar colonia</span><span class="select-chevron">⌄</span>
+      </button>
+      <input type="hidden" id="colonia" required>
+
+      <div id="colonyPickerBackdrop" class="picker-backdrop"></div>
+      <section id="colonyPickerSheet" class="picker-sheet" aria-hidden="true">
+        <div class="picker-grab"></div>
+        <div class="picker-head">
+          <div>
+            <span class="eyebrow">ZONAS</span>
+            <h3>Selecciona una colonia</h3>
+            <p>Usa una colonia existente o agrega una nueva.</p>
+          </div>
+          <button type="button" id="closeColonyPicker" class="picker-close" aria-label="Cerrar">×</button>
+        </div>
+
+        <div id="savedColonies" class="saved-colonies"></div>
+
+        <div class="new-colony-row">
+          <input id="newColonyName" class="field" autocomplete="off" placeholder="Nueva colonia, ej. Américas 2">
+          <button type="button" id="addColony" class="add-colony-btn" aria-label="Agregar colonia">＋</button>
+        </div>
+      </section>
 
       <label for="direccion">Dirección principal *</label>
       <input class="field" id="direccion" required placeholder="Ej. Calle Tikal Mz 45 Lt 11">
@@ -188,6 +214,7 @@ function mapUrl(lat,lng){return `https://www.google.com/maps/search/?api=1&query
 function open(){
  editingId=null; currentPhoto=null; currentLocation=null;
  $("form").reset(); resetPreview();
+ $("colonia").value=""; $("coloniaValue").textContent="Seleccionar colonia"; $("coloniaValue").style.color="var(--muted)";
  $("formEyebrow").textContent="NUEVO REGISTRO";
  $("formTitle").textContent="Agregar domicilio";
  $("formHint").textContent="Guarda una nueva casa o departamento.";
@@ -203,7 +230,7 @@ function openEdit(id){
  currentLocation=d.lat!=null?{lat:d.lat,lng:d.lng,accuracy:d.accuracy}:null;
  $("form").reset();
  document.querySelector(`input[name="tipo"][value="${d.tipo}"]`).checked=true;
- $("colonia").value=d.colonia||"Sin colonia";
+ $("colonia").value=d.colonia||"Sin colonia"; $("coloniaValue").textContent=d.colonia||"Sin colonia"; $("coloniaValue").style.color="var(--text)"; rememberColony(d.colonia||"Sin colonia");
  $("direccion").value=d.direccion||"";
  $("direcciones").value=(d.direcciones||[]).join("\n");
  $("personas").value=(d.personas||[]).join("\n");
@@ -224,7 +251,7 @@ function openEdit(id){
  $("overlay").classList.add("open");
  setTimeout(()=>$("direccion").focus(),50);
 }
-function close(){ $("overlay").classList.remove("open");$("form").reset();resetPreview();currentPhoto=null;currentLocation=null;editingId=null}
+function close(){ setColonyPicker(false); $("overlay").classList.remove("open");$("form").reset();resetPreview();currentPhoto=null;currentLocation=null;editingId=null}
 function resetPreview(){$("preview").innerHTML='<span class="camera">📸</span>'}
 
 
@@ -237,6 +264,80 @@ $("mapMenuBtn").onclick=()=>setColonyDrawer(true);
 $("closeColonyDrawer").onclick=()=>setColonyDrawer(false);
 $("colonyDrawerBackdrop").onclick=()=>setColonyDrawer(false);
 document.addEventListener("keydown",e=>{if(e.key==="Escape")setColonyDrawer(false)});
+
+
+const COLONY_STORE="directorio_colonias_v1";
+function normalizeColonyName(v){return String(v||"").trim().replace(/\s+/g," ");}
+function colonyKey(v){return normalizeColonyName(v).toLocaleLowerCase("es-MX");}
+function getSavedColonies(){
+ let saved=[];
+ try{saved=JSON.parse(localStorage.getItem(COLONY_STORE)||"[]");}catch(e){}
+ if(!Array.isArray(saved))saved=[];
+ const fromData=data.map(d=>normalizeColonyName(d.colonia)).filter(Boolean);
+ const merged=[...saved,...fromData];
+ const unique=[];
+ const seen=new Set();
+ for(const name of merged){
+  const key=colonyKey(name);
+  if(key && !seen.has(key)){seen.add(key);unique.push(name);}
+ }
+ unique.sort((a,b)=>a.localeCompare(b,"es",{sensitivity:"base"}));
+ try{localStorage.setItem(COLONY_STORE,JSON.stringify(unique));}catch(e){}
+ return unique;
+}
+function rememberColony(name){
+ name=normalizeColonyName(name);
+ if(!name)return;
+ const colonies=getSavedColonies();
+ if(!colonies.some(c=>colonyKey(c)===colonyKey(name))){
+  colonies.push(name);
+  colonies.sort((a,b)=>a.localeCompare(b,"es",{sensitivity:"base"}));
+  try{localStorage.setItem(COLONY_STORE,JSON.stringify(colonies));}catch(e){}
+ }
+}
+function setColonyPicker(open){
+ const sheet=$("colonyPickerSheet"),back=$("colonyPickerBackdrop");
+ if(!sheet||!back)return;
+ sheet.classList.toggle("open",open);
+ back.classList.toggle("open",open);
+ sheet.setAttribute("aria-hidden",String(!open));
+ if(open)renderColonyOptions();
+}
+function renderColonyOptions(){
+ const current=normalizeColonyName($("colonia").value);
+ const colonies=getSavedColonies();
+ const counts={};
+ data.forEach(d=>{const c=normalizeColonyName(d.colonia);if(c)counts[colonyKey(c)]=(counts[colonyKey(c)]||0)+1;});
+ $("savedColonies").innerHTML=colonies.length?colonies.map(c=>{
+   const n=counts[colonyKey(c)]||0;
+   return `<button type="button" class="colony-option ${colonyKey(c)===colonyKey(current)?"selected":""}" data-colony="${esc(c)}"><span class="colony-name">📍 ${esc(c)}</span><span class="colony-meta">${n} ${n===1?"domicilio":"domicilios"}${colonyKey(c)===colonyKey(current)?" · ✓":""}</span></button>`;
+ }).join(""):`<div class="empty-colonies">Todavía no hay colonias guardadas.<br>Agrega la primera con ＋.</div>`;
+ document.querySelectorAll(".colony-option").forEach(btn=>btn.onclick=()=>{
+   selectColony(btn.dataset.colony);
+   setColonyPicker(false);
+ });
+}
+function selectColony(name){
+ name=normalizeColonyName(name);
+ if(!name)return;
+ rememberColony(name);
+ $("colonia").value=name;
+ $("coloniaValue").textContent=name;
+ $("coloniaValue").style.color="var(--text)";
+}
+function addColony(){
+ const input=$("newColonyName"), typed=normalizeColonyName(input.value);
+ if(!typed){input.focus();return;}
+ const existing=getSavedColonies().find(c=>colonyKey(c)===colonyKey(typed));
+ selectColony(existing||typed);
+ input.value="";
+ setColonyPicker(false);
+}
+$("coloniaPicker").onclick=()=>setColonyPicker(true);
+$("closeColonyPicker").onclick=()=>setColonyPicker(false);
+$("colonyPickerBackdrop").onclick=()=>setColonyPicker(false);
+$("addColony").onclick=addColony;
+$("newColonyName").addEventListener("keydown",e=>{if(e.key==="Enter"){e.preventDefault();addColony()}});
 
 function bindSwipes(){
  document.querySelectorAll(".swipe-wrap").forEach(wrap=>{
@@ -296,6 +397,9 @@ $("locate").onclick=()=>{
 $("form").onsubmit=async e=>{
  e.preventDefault();
  const existing=editingId!=null?data.find(x=>String(x.id)===String(editingId)):null;
+ const selectedColonyName=normalizeColonyName($("colonia").value);
+ if(!selectedColonyName){$("coloniaPicker").focus();return;}
+ rememberColony(selectedColonyName);
  const d={
   id:editingId!=null?editingId:crypto.randomUUID(),
   tipo:new FormData(e.target).get("tipo"),
