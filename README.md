@@ -1,10 +1,4 @@
-# Directorio de Domicilios — V2.5
-Corrección de funcionamiento:
-- Se eliminan las referencias a los botones rápidos que ya no existen.
-- El botón + vuelve a abrir el formulario.
-- Se restablece la carga de domicilios guardados desde IndexedDB.
-- MAPA abre el slide de colonias.
-- INICIO sube al inicio.
-- HISTORIAL lleva a la lista de domicilios.
-- MÁS abre configuración.
-- Se conservan las demás funciones y el diseño Neon Glass.
+# Directorio de Domicilios — V2.7
+UX: la barra de navegación inferior se oculta suavemente mientras hay un modal,
+drawer, selector de colonia o visor de fachada abierto. Al cerrarlo vuelve a
+aparecer. No se modifica la lógica de almacenamiento ni los domicilios.
