@@ -58,16 +58,57 @@ body{padding-bottom:calc(92px + env(safe-area-inset-bottom))}
 .quick-actions{margin-bottom:18px}.domicile-section-head{margin-bottom:8px}
 @media(max-width:380px){.bottom-nav{width:96vw;grid-template-columns:1fr 1fr 68px 1fr 1fr}.nav-item{font-size:7px}.nav-add{width:58px;height:58px}}
 
+
+/* V2.8 — Personalización dinámica */
+#bgLayer{position:fixed;inset:0;z-index:-2;background-position:center;background-size:cover;background-repeat:no-repeat;opacity:0;filter:saturate(1.08) brightness(.62);transition:opacity .35s ease}
+body.has-custom-bg::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(rgba(3,6,12,.50),rgba(3,6,12,.72))}
+.settings-sheet{position:fixed;left:50%;bottom:0;transform:translate(-50%,105%);width:min(760px,100%);max-height:min(82vh,760px);overflow:auto;z-index:260;padding:12px 20px calc(24px + env(safe-area-inset-bottom));background:rgba(13,18,30,.88);border:1px solid rgba(255,255,255,.12);border-bottom:0;border-radius:30px 30px 0 0;box-shadow:0 -24px 80px rgba(0,0,0,.5),0 0 45px color-mix(in srgb,var(--orange) 18%,transparent);backdrop-filter:blur(28px) saturate(145%);-webkit-backdrop-filter:blur(28px) saturate(145%);transition:transform .28s cubic-bezier(.2,.8,.2,1)}
+.settings-sheet.open{transform:translate(-50%,0)}
+.settings-backdrop{position:fixed;inset:0;z-index:250;background:rgba(2,5,10,.52);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);opacity:0;pointer-events:none;transition:opacity .22s ease}
+.settings-backdrop.open{opacity:1;pointer-events:auto}
+.settings-grab{width:52px;height:5px;border-radius:99px;background:rgba(255,255,255,.25);margin:2px auto 18px}
+.settings-head{display:flex;align-items:center;justify-content:space-between;gap:12px}.settings-head h3{margin:0;font-size:24px}.settings-head p{margin:5px 0 0;color:var(--muted);font-size:13px}
+.settings-close{width:48px;height:48px;border-radius:16px;border:1px solid rgba(255,255,255,.10);background:rgba(255,255,255,.05);color:var(--text);font-size:30px}
+.settings-card{margin-top:20px;padding:16px;border:1px solid rgba(255,255,255,.10);border-radius:22px;background:rgba(255,255,255,.035)}
+.settings-label{display:block;font-weight:800;margin-bottom:12px}.bg-preview{height:130px;border-radius:18px;border:1px dashed rgba(255,255,255,.16);background:linear-gradient(135deg,rgba(255,255,255,.06),rgba(255,255,255,.015));background-size:cover;background-position:center;display:grid;place-items:center;overflow:hidden}.bg-preview span{padding:10px 14px;border-radius:14px;background:rgba(0,0,0,.42);backdrop-filter:blur(10px);font-size:13px;color:#fff}
+.settings-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}.settings-action{min-height:48px;border-radius:15px;border:1px solid color-mix(in srgb,var(--orange) 48%,rgba(255,255,255,.1));background:color-mix(in srgb,var(--orange) 10%,rgba(255,255,255,.04));color:var(--orange);font-weight:800}
+.accent-preview{display:flex;align-items:center;gap:12px}.accent-dot{width:42px;height:42px;border-radius:50%;background:var(--orange);box-shadow:0 0 24px color-mix(in srgb,var(--orange) 55%,transparent);border:2px solid rgba(255,255,255,.45)}.accent-info{font-size:13px;color:var(--muted)}.accent-info b{display:block;color:var(--text);font-size:15px;margin-bottom:2px}
+@media(max-width:480px){.settings-sheet{padding-left:16px;padding-right:16px}.settings-actions{grid-template-columns:1fr}.bg-preview{height:115px}}
+
 </style>
 </head>
 <body>
+
+<div id="bgLayer" aria-hidden="true"></div>
+<div id="settingsBackdrop" class="settings-backdrop"></div>
+<section id="settingsSheet" class="settings-sheet" aria-hidden="true">
+  <div class="settings-grab"></div>
+  <div class="settings-head">
+    <div><span class="eyebrow">PERSONALIZACIÓN</span><h3>Tu espacio</h3><p>Elige una fachada para tu app y deja que el color se adapte.</p></div>
+    <button id="settingsClose" class="settings-close" aria-label="Cerrar">×</button>
+  </div>
+  <div class="settings-card">
+    <span class="settings-label">Fondo de pantalla</span>
+    <div id="bgPreview" class="bg-preview"><span>Sin fondo personalizado</span></div>
+    <div class="settings-actions">
+      <button id="chooseBg" type="button" class="settings-action">🖼️ Elegir fondo</button>
+      <button id="removeBg" type="button" class="settings-action">↺ Restaurar fondo</button>
+    </div>
+    <input id="bgInput" type="file" accept="image/*" hidden>
+  </div>
+  <div class="settings-card">
+    <span class="settings-label">Color dinámico</span>
+    <div class="accent-preview"><span id="accentDot" class="accent-dot"></span><div class="accent-info"><b id="accentName">Neon Orange</b><span>El acento se calcula automáticamente desde tu fondo.</span></div></div>
+  </div>
+</section>
+
 <header class="topbar">
   <div class="brand">
     <span class="eyebrow">DIRECTORIO</span>
     <h1>Mis domicilios</h1>
     <p>Tus entregas, siempre bajo control.</p>
   </div>
-  <button class="icon-btn notification-btn" aria-label="Avisos">♧<span>3</span></button>
+  <button class="icon-btn notification-btn" id="settingsBtn" aria-label="Personalizar">⚙</button>
 </header>
 
 
@@ -602,6 +643,80 @@ $("form").onsubmit=async e=>{
  close();render();
 };
 (async()=>{await migrateOld();await load()})();
+
+/* V2.8 — Personalización */
+const THEME_KEY="directorio_personalizacion_v1";
+function hexFromRgb(r,g,b){return "#"+[r,g,b].map(v=>Math.max(0,Math.min(255,Math.round(v))).toString(16).padStart(2,"0")).join("")}
+function mix(a,b,t){return Math.round(a+(b-a)*t)}
+function deriveTheme(imageData,w,h){
+ const d=imageData.data; let sr=0,sg=0,sb=0,total=0,best=null;
+ for(let y=0;y<h;y+=Math.max(1,Math.floor(h/80))){
+  for(let x=0;x<w;x+=Math.max(1,Math.floor(w/80))){
+   const i=(y*w+x)*4,r=d[i],g=d[i+1],b=d[i+2],mx=Math.max(r,g,b),mn=Math.min(r,g,b),sat=mx?((mx-mn)/mx):0,lum=(mx+mn)/510;
+   if(mx>35 && lum>.18 && lum<.92){
+    const weight=(.35+sat)*(0.65+Math.min(1,lum));
+    sr+=r*weight;sg+=g*weight;sb+=b*weight;total+=weight;
+    if(sat>.48 && (!best||sat>best.sat)){best={r,g,b,sat}}
+   }
+  }
+ }
+ let r=total?sr/total:255,g=total?sg/total:138,b=total?sb/total:34;
+ if(best){r=mix(r,best.r,.58);g=mix(g,best.g,.58);b=mix(b,best.b,.58)}
+ const accent=hexFromRgb(r,g,b);
+ const cyan=hexFromRgb(mix(r,98,.42),mix(g,234,.42),mix(b,255,.42));
+ const green=hexFromRgb(mix(r,83,.45),mix(g,243,.45),mix(b,157,.45));
+ const red=hexFromRgb(mix(r,255,.45),mix(g,92,.45),mix(b,103,.45));
+ return {accent,cyan,green,red};
+}
+function applyTheme(theme){
+ const root=document.documentElement;
+ root.style.setProperty("--orange",theme.accent||"#ff8a22");
+ root.style.setProperty("--orange2",theme.accent||"#ffb13b");
+ root.style.setProperty("--cyan",theme.cyan||"#62eaff");
+ root.style.setProperty("--green",theme.green||"#53f39d");
+ root.style.setProperty("--red",theme.red||"#ff5c67");
+ $("accentDot").style.background=theme.accent||"#ff8a22";
+ $("accentName").textContent=(theme.accent||"#ff8a22").toUpperCase();
+}
+function savePersonalization(state){try{localStorage.setItem(THEME_KEY,JSON.stringify(state))}catch(e){console.warn("No se pudo guardar personalización",e)}}
+function loadPersonalization(){
+ try{
+  const state=JSON.parse(localStorage.getItem(THEME_KEY)||"null");
+  if(!state)return;
+  if(state.bg){$("bgLayer").style.backgroundImage=`url("${state.bg}")`;document.body.classList.add("has-custom-bg");$("bgPreview").style.backgroundImage=`url("${state.bg}")`;$("bgPreview").innerHTML=""}
+  if(state.theme)applyTheme(state.theme);
+ }catch(e){console.warn("Personalización no disponible",e)}
+}
+function openSettings(){
+ $("settingsSheet").classList.add("open");$("settingsBackdrop").classList.add("open");$("settingsSheet").setAttribute("aria-hidden","false");
+ updateBottomNav();
+}
+function closeSettings(){
+ $("settingsSheet").classList.remove("open");$("settingsBackdrop").classList.remove("open");$("settingsSheet").setAttribute("aria-hidden","true");
+ updateBottomNav();
+}
+$("settingsBtn").onclick=openSettings;$("settingsClose").onclick=closeSettings;$("settingsBackdrop").onclick=closeSettings;
+$("chooseBg").onclick=()=>$("bgInput").click();
+$("removeBg").onclick=()=>{
+ localStorage.removeItem(THEME_KEY);document.body.classList.remove("has-custom-bg");$("bgLayer").style.backgroundImage="";$("bgPreview").style.backgroundImage="";$("bgPreview").innerHTML="<span>Sin fondo personalizado</span>";applyTheme({accent:"#ff8a22",cyan:"#62eaff",green:"#53f39d",red:"#ff5c67"});
+};
+$("bgInput").onchange=e=>{
+ const file=e.target.files?.[0];if(!file)return;
+ const reader=new FileReader();
+ reader.onload=()=>{
+  const img=new Image();
+  img.onload=()=>{
+   const max=1280,scale=Math.min(1,max/Math.max(img.width,img.height)),w=Math.max(1,Math.round(img.width*scale)),h=Math.max(1,Math.round(img.height*scale));
+   const c=document.createElement("canvas");c.width=w;c.height=h;const ctx=c.getContext("2d");ctx.drawImage(img,0,0,w,h);
+   const bg=c.toDataURL("image/jpeg",.78);
+   const theme=deriveTheme(ctx.getImageData(0,0,w,h),w,h);
+   $("bgLayer").style.backgroundImage=`url("${bg}")`;$("bgPreview").style.backgroundImage=`url("${bg}")`;$("bgPreview").innerHTML="";
+   document.body.classList.add("has-custom-bg");applyTheme(theme);savePersonalization({bg,theme});
+  };img.src=reader.result;
+ };reader.readAsDataURL(file);e.target.value="";
+};
+loadPersonalization();
+
 </script>
 </body>
 </html>
