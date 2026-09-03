@@ -48,18 +48,20 @@ body{background:radial-gradient(circle at 16% -5%,rgba(255,112,22,.10),transpare
 .fab{background:linear-gradient(145deg,#ffb13b,#ff7b16);color:#160b02;box-shadow:0 0 25px rgba(255,126,25,.28),0 12px 32px rgba(0,0,0,.32);border:1px solid rgba(255,205,122,.45)}
 @media(max-width:430px){.brand{padding:0 52px}.dashboard-stats{gap:8px}.dash-stat{padding:12px}.dash-stat-icon{width:38px;height:38px}}
 
+
+/* Bottom navigation — inspired by the supplied reference */
+body{padding-bottom:calc(92px + env(safe-area-inset-bottom))}
+.bottom-nav{position:fixed;left:50%;bottom:calc(10px + env(safe-area-inset-bottom));transform:translateX(-50%);z-index:140;width:min(94vw,720px);height:74px;display:grid;grid-template-columns:1fr 1fr 76px 1fr 1fr;align-items:center;padding:7px 8px;border:1px solid rgba(255,255,255,.11);border-radius:27px;background:linear-gradient(180deg,rgba(15,20,31,.88),rgba(6,10,17,.93));box-shadow:0 16px 45px rgba(0,0,0,.48),inset 0 1px 0 rgba(255,255,255,.055),0 0 28px rgba(255,126,25,.06);backdrop-filter:blur(26px) saturate(140%);-webkit-backdrop-filter:blur(26px) saturate(140%)}
+.nav-item{height:60px;border:0;background:transparent;color:#6f788a;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-size:8px;font-weight:850;letter-spacing:.45px;border-radius:18px}.nav-item:active{transform:scale(.94)}.nav-item.active{color:var(--orange);text-shadow:0 0 12px rgba(255,138,34,.5)}.nav-icon{font-size:25px;line-height:22px;font-weight:400}.nav-map-icon{width:27px;height:27px;fill:none;stroke:currentColor;stroke-width:3;stroke-linejoin:round;stroke-linecap:round;filter:drop-shadow(0 0 5px rgba(98,234,255,.25))}.nav-map-icon circle{fill:none}
+.nav-add{width:62px;height:62px;justify-self:center;border-radius:50%;border:1px solid rgba(255,192,95,.65);background:radial-gradient(circle at 35% 28%,rgba(255,177,59,.28),rgba(255,126,22,.10) 45%,rgba(5,8,14,.86) 70%);color:var(--orange);font-size:35px;line-height:1;display:grid;place-items:center;box-shadow:0 0 0 5px rgba(255,138,34,.035),0 0 28px rgba(255,126,25,.38),inset 0 0 22px rgba(255,126,25,.10);text-shadow:0 0 14px rgba(255,150,40,.75)}.nav-add:active{transform:scale(.92)}
+/* Make the page content feel like it continues behind the glass bar. */
+.quick-actions{margin-bottom:18px}.domicile-section-head{margin-bottom:8px}
+@media(max-width:380px){.bottom-nav{width:96vw;grid-template-columns:1fr 1fr 68px 1fr 1fr}.nav-item{font-size:7px}.nav-add{width:58px;height:58px}}
+
 </style>
 </head>
 <body>
 <header class="topbar">
-  <button id="mapMenuBtn" class="map-menu-btn" aria-label="Abrir colonias">
-    <svg class="map-neon-icon" viewBox="0 0 64 64" aria-hidden="true">
-      <path class="map-fold" d="M7 15l16-7 18 7 16-7v41l-16 7-18-7-16 7z"/>
-      <path class="map-line" d="M23 8v41M41 15v41"/>
-      <path class="pin-ring" d="M32 19c-7 0-12 5-12 12 0 9 12 19 12 19s12-10 12-19c0-7-5-12-12-12z"/>
-      <circle class="pin-dot" cx="32" cy="31" r="4"/>
-    </svg>
-  </button>
   <div class="brand">
     <span class="eyebrow">DIRECTORIO</span>
     <h1>Mis domicilios</h1>
@@ -117,7 +119,29 @@ body{background:radial-gradient(circle at 16% -5%,rgba(255,112,22,.10),transpare
   <section class="section-head domicile-section-head"><div><span class="eyebrow">MI BASE</span><h2>Domicilios</h2></div></section>
   <section id="list" class="list"></section>
 </main>
-<button id="add" class="fab">＋</button>
+
+<nav class="bottom-nav" aria-label="Navegación principal">
+  <button type="button" class="nav-item active" id="navHome">
+    <span class="nav-icon">⌂</span><span>INICIO</span>
+  </button>
+  <button type="button" class="nav-item" id="mapMenuBtn" aria-label="Abrir colonias">
+    <svg class="nav-map-icon" viewBox="0 0 64 64" aria-hidden="true">
+      <path d="M7 15l16-7 18 7 16-7v41l-16 7-18-7-16 7z"/>
+      <path d="M23 8v41M41 15v41"/>
+      <path d="M32 19c-7 0-12 5-12 12 0 9 12 19 12 19s12-10 12-19c0-7-5-12-12-12z"/>
+      <circle cx="32" cy="31" r="4"/>
+    </svg>
+    <span>MAPA</span>
+  </button>
+  <button type="button" id="add" class="nav-add" aria-label="Agregar domicilio"><span>＋</span></button>
+  <button type="button" class="nav-item" id="navHistory">
+    <span class="nav-icon">◷</span><span>HISTORIAL</span>
+  </button>
+  <button type="button" class="nav-item" id="navMore">
+    <span class="nav-icon">☷</span><span>MÁS</span>
+  </button>
+</nav>
+
 
 <div id="overlay" class="overlay">
   <div id="backdrop" class="backdrop"></div>
@@ -496,6 +520,10 @@ $("add").onclick=open;
 $("quickNew").onclick=open;
 $("quickSearch").onclick=()=>{ $("search").focus(); $("search").scrollIntoView({behavior:"smooth",block:"center"}); };
 $("quickColonies").onclick=()=>setColonyDrawer(true);
+$("navHome").onclick=()=>window.scrollTo({top:0,behavior:"smooth"});
+$("navHistory").onclick=()=>window.scrollTo({top:document.body.scrollHeight,behavior:"smooth"});
+$("navMore").onclick=()=>alert("Más funciones estarán disponibles próximamente.");
+
 $("close").onclick=close;$("backdrop").onclick=close;$("search").oninput=render;
 $("takePhoto").onclick=()=>$("photo").click();
 $("removePhoto").onclick=()=>{currentPhoto=null;resetPreview();$("photo").value=""};

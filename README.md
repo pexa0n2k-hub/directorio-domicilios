@@ -1,12 +1,12 @@
-# Directorio de Domicilios — V2 Neon Glass
+# Directorio de Domicilios — V2.1 Neon Glass
 
-Interfaz rediseñada tomando como referencia visual la captura proporcionada:
-- Dashboard oscuro estilo iOS / Liquid Glass.
-- Neon naranja como acento principal, con cian/verde/rojo para estados.
-- Encabezado tipo app de reparto.
-- Buscador prominente.
-- Estadísticas de domicilios, fotos y departamentos.
-- Acciones rápidas.
-- Domicilio reciente.
-- Colonias guardadas como tarjetas.
-- Se mantiene la funcionalidad de la V1.10: fotos ampliables, colonias reutilizables, Google Maps, direcciones asociadas, personas, teléfonos, notas y gestos de editar/eliminar.
+Nueva navegación inferior inspirada en la referencia proporcionada:
+- INICIO
+- MAPA / colonias (abre el slide de zonas existente)
+- + para agregar domicilio
+- HISTORIAL
+- MÁS
+
+El botón de mapa ya no está arriba: ahora vive en la barra inferior.
+El botón central de agregar domicilio también forma parte de la navegación inferior.
+Se conserva el resto de la V2: dashboard Neon Glass, colonias, fotos ampliables, Google Maps, direcciones asociadas, personas, teléfonos, notas y edición/eliminación por gesto.
