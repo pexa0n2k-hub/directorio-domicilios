@@ -1,7 +1,4 @@
-# Directorio de Domicilios — V2.3 Clean
-
-Se eliminaron completamente de la interfaz:
-- ACCIONES RÁPIDAS
-- COLONIAS GUARDADAS / MIS ZONAS
-
-No se alteran las funciones restantes ni la navegación inferior.
+# Directorio de Domicilios — V2.4
+Corrección quirúrgica: se eliminan únicamente ACCIONES RÁPIDAS y MIS ZONAS.
+Se conservan agregar domicilio, buscador, estadísticas, domicilios guardados,
+fotos, Google Maps, menú de colonias y navegación inferior.
