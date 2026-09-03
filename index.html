@@ -60,7 +60,7 @@ body{padding-bottom:calc(92px + env(safe-area-inset-bottom))}
 
 
 /* V2.8 — Personalización dinámica */
-#bgLayer{position:fixed;inset:0;z-index:-2;background-position:center;background-size:cover;background-repeat:no-repeat;opacity:0;filter:saturate(1.08) brightness(.62);transition:opacity .35s ease}
+#bgLayer{position:fixed;inset:0;z-index:-2;background-position:center;background-size:cover;background-repeat:no-repeat;opacity:0;filter:saturate(1.12) brightness(.86);transition:opacity .35s ease}
 body.has-custom-bg::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(rgba(3,6,12,.50),rgba(3,6,12,.72))}
 .settings-sheet{position:fixed;left:50%;bottom:0;transform:translate(-50%,105%);width:min(760px,100%);max-height:min(82vh,760px);overflow:auto;z-index:260;padding:12px 20px calc(24px + env(safe-area-inset-bottom));background:rgba(13,18,30,.88);border:1px solid rgba(255,255,255,.12);border-bottom:0;border-radius:30px 30px 0 0;box-shadow:0 -24px 80px rgba(0,0,0,.5),0 0 45px color-mix(in srgb,var(--orange) 18%,transparent);backdrop-filter:blur(28px) saturate(145%);-webkit-backdrop-filter:blur(28px) saturate(145%);transition:transform .28s cubic-bezier(.2,.8,.2,1)}
 .settings-sheet.open{transform:translate(-50%,0)}
@@ -74,6 +74,14 @@ body.has-custom-bg::after{content:"";position:fixed;inset:0;z-index:-1;pointer-e
 .settings-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}.settings-action{min-height:48px;border-radius:15px;border:1px solid color-mix(in srgb,var(--orange) 48%,rgba(255,255,255,.1));background:color-mix(in srgb,var(--orange) 10%,rgba(255,255,255,.04));color:var(--orange);font-weight:800}
 .accent-preview{display:flex;align-items:center;gap:12px}.accent-dot{width:42px;height:42px;border-radius:50%;background:var(--orange);box-shadow:0 0 24px color-mix(in srgb,var(--orange) 55%,transparent);border:2px solid rgba(255,255,255,.45)}.accent-info{font-size:13px;color:var(--muted)}.accent-info b{display:block;color:var(--text);font-size:15px;margin-bottom:2px}
 @media(max-width:480px){.settings-sheet{padding-left:16px;padding-right:16px}.settings-actions{grid-template-columns:1fr}.bg-preview{height:115px}}
+
+
+/* V2.9 — Fondo realmente visible */
+#bgLayer{z-index:0!important;opacity:0;pointer-events:none}
+body.has-custom-bg #bgLayer{opacity:1}
+body.has-custom-bg::after{z-index:0!important;background:linear-gradient(rgba(3,6,12,.28),rgba(3,6,12,.52))}
+body>.topbar,body>.container,body>.bottom-nav,body>aside{position:relative;z-index:1}
+body>.bottom-nav{position:fixed}
 
 </style>
 </head>
