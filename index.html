@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#090d16">
-<title>Directorio de Domicilios</title>
+<title>Directorio de Domicilios · Neon Glass</title>
 <style>
 *{box-sizing:border-box}:root{--bg:#080c15;--panel:rgba(19,27,42,.84);--border:rgba(255,255,255,.10);--text:#f5f7ff;--muted:#8e9ab0;--cyan:#67e8f9;--green:#62f5a5;--red:#ff5964}
 html,body{margin:0;min-height:100%;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",sans-serif}
@@ -32,40 +32,89 @@ form{display:grid;gap:8px}form>label{font-size:13px;font-weight:750;color:#dfe7f
 .photo.has-photo{cursor:zoom-in;position:relative}.photo.has-photo::after{content:"⌕";position:absolute;right:7px;bottom:7px;width:25px;height:25px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(8,13,24,.62);border:1px solid rgba(255,255,255,.18);color:#fff;font-size:16px;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}.photo.has-photo:active{transform:scale(.97)}
 .image-viewer{position:fixed;inset:0;z-index:300;display:flex;align-items:center;justify-content:center;padding:18px;background:rgba(3,7,15,.88);backdrop-filter:blur(22px) saturate(125%);-webkit-backdrop-filter:blur(22px) saturate(125%);opacity:0;pointer-events:none;transition:opacity .22s ease}.image-viewer.open{opacity:1;pointer-events:auto}.image-viewer img{display:block;max-width:96vw;max-height:88vh;width:auto;height:auto;object-fit:contain;border-radius:18px;box-shadow:0 20px 70px rgba(0,0,0,.55);user-select:none;-webkit-user-drag:none;touch-action:pinch-zoom}.viewer-close{position:absolute;top:max(18px,env(safe-area-inset-top));right:18px;width:46px;height:46px;border-radius:15px;border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.08);color:#fff;font-size:29px;z-index:2;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}.viewer-hint{position:absolute;bottom:max(18px,env(safe-area-inset-bottom));left:0;right:0;text-align:center;color:rgba(255,255,255,.62);font-size:12px;pointer-events:none}
 
+
+/* V2 visual direction — dark iOS Liquid Glass + neon orange */
+:root{--bg:#05070c;--panel:rgba(13,18,28,.72);--border:rgba(255,255,255,.10);--text:#f5f7ff;--muted:#7f899c;--cyan:#62eaff;--green:#53f39d;--red:#ff5c67;--orange:#ff8a22;--orange2:#ffb13b}
+html,body{background:#05070c}
+body{background:radial-gradient(circle at 16% -5%,rgba(255,112,22,.10),transparent 27%),radial-gradient(circle at 100% 12%,rgba(255,139,38,.06),transparent 25%),radial-gradient(circle at 50% 100%,rgba(31,101,255,.06),transparent 34%),#05070c}
+.topbar{position:relative;max-width:760px;padding:24px 20px 12px;align-items:flex-start}.brand{padding:0 56px}.brand h1{font-size:27px;letter-spacing:-.7px;margin:3px 0}.brand p{margin:0;color:var(--muted);font-size:11px}.brand .eyebrow{color:var(--orange);letter-spacing:3.4px}.notification-btn{position:relative;color:#dce3f0;font-size:22px}.notification-btn span{position:absolute;top:4px;right:4px;width:15px;height:15px;border-radius:50%;background:var(--orange);color:#120b04;font-size:9px;display:grid;place-items:center;font-weight:950}
+.dashboard-search{margin-top:8px;border-color:rgba(255,143,43,.17);box-shadow:inset 0 1px 0 rgba(255,255,255,.035),0 10px 35px rgba(0,0,0,.16)}
+.dashboard-search span{color:var(--orange)}
+.dashboard-stats{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 0}.dash-stat{min-height:94px;padding:14px;border-radius:21px;border:1px solid rgba(255,255,255,.10);background:linear-gradient(145deg,rgba(255,255,255,.055),rgba(10,14,22,.72));backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);display:flex;align-items:center;gap:11px;box-shadow:inset 0 1px 0 rgba(255,255,255,.035)}.dash-stat-icon{width:42px;height:42px;border-radius:14px;display:grid;place-items:center;font-size:25px;color:var(--orange);border:1px solid rgba(255,138,34,.22);background:rgba(255,138,34,.07);text-shadow:0 0 12px rgba(255,138,34,.75)}.dash-stat b{display:block;font-size:23px;line-height:1}.dash-stat small{display:block;color:var(--muted);font-size:9px;line-height:1.25;margin-top:5px;letter-spacing:.35px}.photo-stat{border-color:rgba(98,234,255,.14)}.photo-stat .dash-stat-icon{color:var(--cyan);border-color:rgba(98,234,255,.22);background:rgba(98,234,255,.06);text-shadow:0 0 12px rgba(98,234,255,.75)}.dept-stat{grid-column:1/-1;min-height:68px}.dept-stat .dash-stat-icon{color:var(--red);border-color:rgba(255,92,103,.22);background:rgba(255,92,103,.06);text-shadow:0 0 12px rgba(255,92,103,.7)}
+.quick-actions{margin:5px 0 24px;padding:15px;border:1px solid rgba(255,138,34,.15);border-radius:21px;background:rgba(10,14,22,.48);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px)}.quick-grid{display:grid;gap:7px;margin-top:9px}.quick-action{display:flex;align-items:center;gap:10px;border:1px solid rgba(255,255,255,.08);border-radius:14px;background:rgba(255,255,255,.025);color:#dfe5f1;padding:11px 12px;text-align:left;font-size:12px}.quick-action:first-child{color:var(--orange);border-color:rgba(255,138,34,.2)}.quick-action span{color:inherit}.quick-action:active{transform:scale(.985);background:rgba(255,138,34,.07)}
+.recent-card{margin:0 0 24px;padding:14px;border:1px solid rgba(255,138,34,.17);border-radius:22px;background:linear-gradient(145deg,rgba(255,138,34,.065),rgba(10,14,22,.72));backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
+.recent-card .recent-label{color:var(--orange);font-size:9px;font-weight:950;letter-spacing:2px}.recent-inner{display:grid;grid-template-columns:82px 1fr;gap:12px;align-items:center;margin-top:8px}.recent-photo{width:82px;height:82px;border-radius:15px;overflow:hidden;background:rgba(255,255,255,.04);display:grid;place-items:center}.recent-photo img{width:100%;height:100%;object-fit:cover}.recent-photo span{font-size:28px}.recent-address{font-size:16px;font-weight:900}.recent-colony{font-size:11px;color:var(--muted);margin-top:5px}.recent-status{color:var(--green);font-size:10px;font-weight:850;margin-top:7px}
+.colony-section-head{margin-top:4px}.section-head h2{letter-spacing:-.5px}.dashboard-colonies{display:grid;gap:8px;margin-bottom:24px}.dashboard-colony{display:flex;align-items:center;gap:12px;padding:13px 14px;border:1px solid rgba(255,255,255,.09);border-radius:17px;background:linear-gradient(100deg,rgba(255,255,255,.035),rgba(9,13,21,.68));backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);cursor:pointer}.dashboard-colony .zone-icon{width:36px;height:36px;border-radius:12px;display:grid;place-items:center;color:var(--orange);border:1px solid rgba(255,138,34,.2);background:rgba(255,138,34,.06)}.dashboard-colony .zone-name{font-size:13px;font-weight:850}.dashboard-colony .zone-count{font-size:10px;color:var(--muted);margin-top:3px}.dashboard-colony .zone-arrow{margin-left:auto;color:#697489;font-size:23px}.domicile-section-head{margin-top:10px}.card{border-color:rgba(255,138,34,.13);background:linear-gradient(145deg,rgba(17,24,37,.76),rgba(8,12,19,.82));box-shadow:inset 0 1px 0 rgba(255,255,255,.025)}.card:not(.red) .type{color:var(--orange)}.card.red{border-color:rgba(255,92,103,.22)}.photo{border:1px solid rgba(255,255,255,.06)}.map-badge{color:var(--orange)}
+.fab{background:linear-gradient(145deg,#ffb13b,#ff7b16);color:#160b02;box-shadow:0 0 25px rgba(255,126,25,.28),0 12px 32px rgba(0,0,0,.32);border:1px solid rgba(255,205,122,.45)}
+@media(max-width:430px){.brand{padding:0 52px}.dashboard-stats{gap:8px}.dash-stat{padding:12px}.dash-stat-icon{width:38px;height:38px}}
+
 </style>
 </head>
 <body>
 <header class="topbar">
-  <div><span class="eyebrow">DIRECTORIO</span><h1>Mis domicilios</h1></div>
-  <button class="icon-btn" aria-label="Configuración">⚙️</button>
-</header>
-<main class="container">
-  <div class="search"><span>⌕</span><input id="search" type="search" placeholder="Buscar nombre, dirección o teléfono..."></div>
   <button id="mapMenuBtn" class="map-menu-btn" aria-label="Abrir colonias">
-      <svg class="map-neon-icon" viewBox="0 0 64 64" aria-hidden="true">
-        <path class="map-fold" d="M7 15l16-7 18 7 16-7v41l-16 7-18-7-16 7z"/>
-        <path class="map-line" d="M23 8v41M41 15v41"/>
-        <path class="pin-ring" d="M32 19c-7 0-12 5-12 12 0 9 12 19 12 19s12-10 12-19c0-7-5-12-12-12z"/>
-        <circle class="pin-dot" cx="32" cy="31" r="4"/>
-      </svg>
-    </button>
-  <div id="colonyDrawerBackdrop" class="drawer-backdrop"></div>
-  <aside id="colonyDrawer" class="colony-drawer" aria-hidden="true">
-    <div class="drawer-head">
-      <div>
-        <span class="eyebrow">ZONAS</span>
-        <h3>Mis colonias</h3>
-        <div id="colonyCount" class="drawer-count">0 colonias</div>
-      </div>
-      <button id="closeColonyDrawer" class="drawer-close" aria-label="Cerrar">×</button>
+    <svg class="map-neon-icon" viewBox="0 0 64 64" aria-hidden="true">
+      <path class="map-fold" d="M7 15l16-7 18 7 16-7v41l-16 7-18-7-16 7z"/>
+      <path class="map-line" d="M23 8v41M41 15v41"/>
+      <path class="pin-ring" d="M32 19c-7 0-12 5-12 12 0 9 12 19 12 19s12-10 12-19c0-7-5-12-12-12z"/>
+      <circle class="pin-dot" cx="32" cy="31" r="4"/>
+    </svg>
+  </button>
+  <div class="brand">
+    <span class="eyebrow">DIRECTORIO</span>
+    <h1>Mis domicilios</h1>
+    <p>Tus entregas, siempre bajo control.</p>
+  </div>
+  <button class="icon-btn notification-btn" aria-label="Avisos">♧<span>3</span></button>
+</header>
+
+
+<div id="colonyDrawerBackdrop" class="drawer-backdrop"></div>
+<aside id="colonyDrawer" class="colony-drawer" aria-hidden="true">
+  <div class="drawer-head">
+    <div><span class="eyebrow">ZONAS</span><h3>Mis colonias</h3><div id="colonyCount" class="drawer-count">0 colonias</div></div>
+    <button id="closeColonyDrawer" class="drawer-close" aria-label="Cerrar">×</button>
+  </div>
+  <div id="colonyChips" class="drawer-list"></div>
+</aside>
+
+<main class="container">
+  <div class="search dashboard-search"><span>⌕</span><input id="search" type="search" placeholder="Buscar domicilio, calle, colonia..."></div>
+
+  <section class="dashboard-stats">
+    <div class="dash-stat house-stat">
+      <div class="dash-stat-icon">⌂</div>
+      <div><b id="houses">0</b><small>DOMICILIOS<br>REGISTRADOS</small></div>
     </div>
-    <div id="colonyChips" class="drawer-list"></div>
-  </aside>
-  <section class="stats">
-    <div class="stat"><span class="ico">🏠</span><b id="houses">0</b><small>Casas</small></div>
-    <div class="stat red"><span class="ico">🏢</span><b id="apartments">0</b><small>Departamentos</small></div>
+    <div class="dash-stat photo-stat">
+      <div class="dash-stat-icon">▣</div>
+      <div><b id="photoCount">0</b><small>CON<br>FOTOGRAFÍA</small></div>
+    </div>
+    <div class="dash-stat dept-stat">
+      <div class="dash-stat-icon">▦</div>
+      <div><b id="apartments">0</b><small>DEPARTAMENTOS<br>REGISTRADOS</small></div>
+    </div>
   </section>
-  <section class="section-head"><div><span class="eyebrow">MI BASE</span><h2>Domicilios</h2></div><span class="count" id="count">0 registros</span></section>
+
+  <section class="quick-actions">
+    <div class="quick-head"><span class="eyebrow">ACCIONES RÁPIDAS</span></div>
+    <div class="quick-grid">
+      <button type="button" id="quickNew" class="quick-action">＋ <span>Nuevo domicilio</span></button>
+      <button type="button" id="quickSearch" class="quick-action">⌕ <span>Buscar domicilio</span></button>
+      <button type="button" id="quickColonies" class="quick-action">⌾ <span>Ver colonias</span></button>
+    </div>
+  </section>
+
+  <section class="recent-card" id="recentCard" hidden></section>
+
+  <section class="section-head colony-section-head">
+    <div><span class="eyebrow">COLONIAS GUARDADAS</span><h2>Mis zonas</h2></div>
+    <span class="count" id="count">0 registros</span>
+  </section>
+
+  <section class="dashboard-colonies" id="dashboardColonies"></section>
+
+  <section class="section-head domicile-section-head"><div><span class="eyebrow">MI BASE</span><h2>Domicilios</h2></div></section>
   <section id="list" class="list"></section>
 </main>
 <button id="add" class="fab">＋</button>
@@ -218,6 +267,7 @@ function render(){
     </article></div>`).join("")}</div>
  </section>`).join(""):`<div class="empty"><div class="big">${data.length?"🔎":"🏠"}</div><h3>${data.length?"Sin resultados":"Aún no tienes domicilios"}</h3><p>${data.length?"Prueba otro nombre, dirección o teléfono.":"Pulsa ＋ para registrar tu primer domicilio."}</p></div>`;
  bindSwipes();
+ renderDashboard();
 }
 
 function mapUrl(lat,lng){return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(lat+","+lng)}`}
@@ -378,6 +428,32 @@ $("list").addEventListener("keydown",e=>{
 });
 document.addEventListener("keydown",e=>{if(e.key==="Escape")closeImageViewer()});
 
+
+function renderDashboard(){
+ const total=data.length;
+ const photoTotal=data.filter(d=>!!d.foto).length;
+ $("photoCount").textContent=photoTotal;
+ const groups={};
+ data.forEach(d=>{const c=(d.colonia||"Sin colonia").trim()||"Sin colonia";(groups[c]??=[]).push(d)});
+ const names=Object.keys(groups).sort((a,b)=>a.localeCompare(b,"es",{sensitivity:"base"}));
+ $("dashboardColonies").innerHTML=names.length?names.slice(0,6).map(c=>`
+  <button type="button" class="dashboard-colony" data-zone="${esc(c)}">
+   <span class="zone-icon">⌾</span>
+   <span><span class="zone-name">${esc(c)}</span><span class="zone-count">${groups[c].length} ${groups[c].length===1?"domicilio":"domicilios"}</span></span>
+   <span class="zone-arrow">›</span>
+  </button>`).join(""):`<div class="empty"><div class="big">⌾</div><h3>Aún no tienes colonias</h3><p>Agrega tu primer domicilio para crear tu base.</p></div>`;
+ document.querySelectorAll(".dashboard-colony").forEach(btn=>btn.onclick=()=>{selectedColony=btn.dataset.zone;render()});
+ const recent=data[data.length-1];
+ const recentCard=$("recentCard");
+ if(recent){
+  recentCard.hidden=false;
+  recentCard.innerHTML=`<div class="recent-label">DOMICILIO RECIENTE</div><div class="recent-inner">
+   <div class="recent-photo">${recent.foto?`<img src="${recent.foto}" alt="Fachada">`:`<span>⌂</span>`}</div>
+   <div><div class="recent-address">${esc(recent.direccion)}</div><div class="recent-colony">${esc(recent.colonia||"Sin colonia")}</div><div class="recent-status">● Registrado en tu base</div></div>
+  </div>`;
+ }else recentCard.hidden=true;
+}
+
 function bindSwipes(){
  document.querySelectorAll(".swipe-wrap").forEach(wrap=>{
   const card=wrap.querySelector(".card");
@@ -416,7 +492,11 @@ async function confirmDelete(id){
  data=data.filter(x=>String(x.id)!==String(id));render();
 }
 
-$("add").onclick=open;$("close").onclick=close;$("backdrop").onclick=close;$("search").oninput=render;
+$("add").onclick=open;
+$("quickNew").onclick=open;
+$("quickSearch").onclick=()=>{ $("search").focus(); $("search").scrollIntoView({behavior:"smooth",block:"center"}); };
+$("quickColonies").onclick=()=>setColonyDrawer(true);
+$("close").onclick=close;$("backdrop").onclick=close;$("search").oninput=render;
 $("takePhoto").onclick=()=>$("photo").click();
 $("removePhoto").onclick=()=>{currentPhoto=null;resetPreview();$("photo").value=""};
 $("photo").onchange=e=>{
