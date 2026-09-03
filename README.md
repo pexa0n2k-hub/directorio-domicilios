@@ -1,12 +1,9 @@
-# Directorio de Domicilios — V2.1 Neon Glass
+# Directorio de Domicilios — V2.2
 
-Nueva navegación inferior inspirada en la referencia proporcionada:
-- INICIO
-- MAPA / colonias (abre el slide de zonas existente)
-- + para agregar domicilio
-- HISTORIAL
-- MÁS
-
-El botón de mapa ya no está arriba: ahora vive en la barra inferior.
-El botón central de agregar domicilio también forma parte de la navegación inferior.
-Se conserva el resto de la V2: dashboard Neon Glass, colonias, fotos ampliables, Google Maps, direcciones asociadas, personas, teléfonos, notas y edición/eliminación por gesto.
+Limpieza de interfaz solicitada:
+- Eliminadas las secciones "ACCIONES RÁPIDAS" y "MIS ZONAS".
+- No se modificó la barra de navegación inferior.
+- Se mantienen el botón central para agregar domicilio y el botón MAPA/slide de colonias.
+- Se mantienen buscador, estadísticas, domicilios, fotos ampliables, Google Maps,
+  direcciones asociadas, personas, teléfonos, notas y edición/eliminación por gesto.
+- Se conserva el estilo Liquid Glass + Neon.
